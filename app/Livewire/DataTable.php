@@ -13,20 +13,31 @@ class DataTable extends Component
     public $search='';
     public $perPage = 5;
 
-    public function updatingPerPage()
-    {
-        $this->resetPage();
-    }
+    public $type = '';
+    public $statuss=3;
+    
 
+    // public function mount($status)
+    // {
+    //     dd($status);
+    //     $this->statuss = $status;
+    // }
 
     public function render()
     {
-        $data = ApplicationStatusList::where('StatusType', 1)->with('application')->paginate($this->perPage);
+        $data = ApplicationStatusList::where('StatusType', $this->statuss)
+        ->with('application')
+        ->when($this->type !=='', function ($query) {
+            return $query->whereHas('application', function ($q) {
+                $q->where('Type', $this->type); 
+            });
+        })
+        ->search($this->search)->paginate($this->perPage);
 
         return view('livewire.data-table',
             [
-                'data' => $data
-                
+                'data' => $data,
+                'status' => $this->statuss
             ]
         );
         

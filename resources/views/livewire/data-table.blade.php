@@ -1,9 +1,19 @@
-<link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
 
-
-<div>
-    <section class="mt-10">
-        <div class="mx-auto max-w-screen-xl px-4 lg:px-12">
+<div >
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <section>
+        <div class="text-center text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
+            @if($status == 1)
+                Pending
+            @elseif($status == 2)
+                Denied
+            @elseif($status == 3)
+                Accepted
+            @else
+                Unknown Status
+            @endif
+        </div>
+        <div class="mt-5 mx-auto max-w-screen-xl">
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
                 <div class="flex items-center justify-between d p-4">
                     <div class="flex">
@@ -16,19 +26,21 @@
                                         clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input  type="text"
+                            <input 
+                                wire:model.live.debounce.300ms="search"
+                                type="text"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2 "
                                 placeholder="Search" required="">
                         </div>
                     </div>
                     <div class="flex space-x-3">
                         <div class="flex space-x-3 items-center">
-                            <label class="w-40 text-sm font-medium text-gray-900">User Type :</label>
-                            <select 
+                            <label class="w-40 text-sm font-medium text-gray-900">Type :</label>
+                            <select wire:model.live="type"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                 <option value="">All</option>
-                                <option value="0">User</option>
-                                <option value="1">Admin</option>
+                                <option value="reaccreditation">Reaccreditation</option>
+                                <option value="recognition">Accreditation</option>
                             </select>
                         </div>
                     </div>
@@ -75,8 +87,7 @@
                     <div class="flex ">
                         <div class="flex space-x-4 items-center mb-3">
                             <label class="w-32 text-sm font-medium text-gray-900">Per Page</label>
-                            <select wire:model = "perPage"
-                                
+                            <select wire:model.live="perPage"
                                 class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
@@ -85,10 +96,12 @@
                                 <option value="100">100</option>
                             </select>
                         </div>
+                       
                     </div>
                     {{ $data->links()}}
                 </div>
             </div>
         </div>
     </section>
+   
 </div>

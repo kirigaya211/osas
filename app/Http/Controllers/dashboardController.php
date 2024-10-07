@@ -15,7 +15,7 @@ class dashboardController extends Controller
      */
     public function index()
     {
-       return view('admin.dashboard');
+       return $this->overview();
     }
 
     /**
@@ -79,8 +79,8 @@ class dashboardController extends Controller
         // return view('admin.overview');
     }
 
-    public function pending(){
-        $pending = PendingList::all();
-        return view('admin.dataTable');
+    public function pending($status){
+    
+        return view('admin.dataTable',['status'=>$status]);
     }
 }

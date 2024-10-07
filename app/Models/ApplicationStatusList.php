@@ -14,5 +14,17 @@ class ApplicationStatusList extends Model
     {
         return $this->belongsTo(ApplicationInfo::class, 'ApplicationID');
     }
+
+    public function scopeSearch($query, $value)
+    {
+        $query->where('ApplicationID', 'like', "%{$value}%")
+            ->orWhere('StatusID', 'like', "%{$value}%")
+            ->orWhereHas('application', function ($query) use ($value) {
+                $query->where('OrganizationName', 'like', "%{$value}%") 
+                      ->orWhere('representativeName', 'like', "%{$value}%"); 
+            });
+           
+    }
+
 }
 
