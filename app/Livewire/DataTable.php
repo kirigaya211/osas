@@ -14,7 +14,7 @@ class DataTable extends Component
     public $perPage = 5;
 
     public $type = '';
-    public $statuss=3;
+    public $statuss;
     
 
     // public function mount($status)
