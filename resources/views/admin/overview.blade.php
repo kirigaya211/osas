@@ -83,14 +83,14 @@
                  <div>
                   
                    <h5 class="leading-none text-2xl font-bold text-gray-900 dark:text-white pb-1">Total Request</h5>
-                   <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Leads generated per month</p>
+                   <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Generated Request</p>
                  </div>
                </div>
                <div class=" p-4 flex justify-between items-center">
                   <!-- Button and Generate Report within the same div -->
                   <div class="flex space-x-4">
                     <!-- First button -->
-                    <button
+                    {{-- <button
                       id="dropdownDefaultButton"
                       data-dropdown-toggle="lastDaysdropdown"
                       data-dropdown-placement="bottom"
@@ -100,7 +100,7 @@
                       <svg class="w-2.5 m-2.5 ms-1.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                         <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4" />
                       </svg>
-                    </button>
+                    </button> --}}
                 
                     <!-- Generate Report section -->
                     <span class="bg-orange-100 hover:bg-gray-100 hover:border-black text-green-800 text-xs font-medium inline-flex items-center px-2.5 py-1 rounded-md dark:bg-green-900 dark:text-green-300">
@@ -129,11 +129,11 @@
              </div>
 
              <!-- Include your bar chart here -->
-      <livewire:column-chart/>
+                   <livewire:column-chart/>
              {{-- admin include --}}
 
 
-             <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
+             {{-- <div class="grid grid-cols-1 items-center border-gray-200 border-t dark:border-gray-700 justify-between">
                <div class="flex justify-between items-center pt-5">
                  <!-- Button -->
                
@@ -159,7 +159,7 @@
                  </div>
              
                </div>
-             </div>
+             </div> --}}
          </div>
          
      </div>
@@ -203,13 +203,20 @@
              </p>
           </div>
        </div>
-       <div class="flex items-center justify-center h-48 mb-4 rounded bg-gray-50 dark:bg-gray-800">
-          <p class="text-2xl text-gray-400 dark:text-gray-500">
-             <svg class="w-3.5 h-3.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 1v16M1 9h16"/>
-             </svg>
-          </p>
+
+
+      <div class="max-w w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4 md:p-6 ">
+         <div class="max-w-full w-full">
+             
+
+            @livewire('calendar')
+            {{-- <livewire:calendar/> --}}
+
+         </div>
        </div>
+
+
+
        <div class="grid grid-cols-2 gap-4">
           <div class="flex items-center justify-center rounded bg-gray-50 h-28 dark:bg-gray-800">
              <p class="text-2xl text-gray-400 dark:text-gray-500">

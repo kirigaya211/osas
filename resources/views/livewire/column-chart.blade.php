@@ -12,7 +12,7 @@
       series: [
         {
           name: "Pending",
-          color: "#1A56DB",
+          color: "#FEF9C3",
           data: [
             { x: "June", y: {{$pending['June']}} },
             { x: "July", y: {{$pending['July']}} },
@@ -25,7 +25,7 @@
         },
         {
           name: "Disapproved",
-          color: "#FDBA8C",
+          color: "#EF4444",
           data: [
             { x: "June", y: {{$denied['June']}} },
             { x: "July", y: {{$denied['July']}} },
@@ -38,7 +38,7 @@
         },
         {
           name: "Approved",
-          color: "#8cfdba",
+          color: "#22C55E",
           data: [
             { x: "June", y: {{$accepted['June']}} },
             { x: "July", y: {{$accepted['July']}} },

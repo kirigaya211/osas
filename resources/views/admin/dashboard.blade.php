@@ -55,7 +55,7 @@
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</a>
                   </li>
                   <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
                   </li>
                 </ul>
               </div>
@@ -126,7 +126,7 @@
   
   <div class="p-1 sm:ml-64">
       
-     <div class="p-4 border-2 border-gray-00 border-dashed rounded-lg dark:border-gray-700 mt-14 h-full w-full">
+     <div class="mt-14 h-full w-full">
       
       @yield('content')
 

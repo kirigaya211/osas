@@ -17,7 +17,6 @@ return new class extends Migration
             $table->string('ChecklistItem',255);
             $table->string('Feedback',255)->nullable();
             $table->timestamps();
-
             $table->foreign('ApplicationID')->references('ApplicationID')->on('application_infos')->onDelete('cascade');
         });
     }

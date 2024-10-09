@@ -8,8 +8,22 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicationInfo extends Model
 {
     protected $primaryKey = 'ApplicationID';
-    protected $fillable = ['ApplicationID','OrganizationName','OrganizationDescription','OrganizationID','Type','RepresentativeName','RepresentativeEmail','RepresentativeContact'];
+    protected $fillable = ['ApplicationID','OrganizationName','OrganizationDescription','OrganizationID','Type','representativeName','representativeEmail','contactNumber'];
 
+    public function organization()
+    {
+        return $this->belongsTo(Organization::class, 'OrganizationID');
+    }
+
+    public function students()
+    {
+        return $this->hasMany(ApplicationStudentList::class, 'ApplicationID');
+    }
+
+    public function staff()
+    {
+        return $this->hasMany(ApplicationStaffList::class, 'ApplicationID');
+    }
 
     public function statuses()
     {
@@ -20,8 +34,4 @@ class ApplicationInfo extends Model
     {
         return $this->hasMany(ApplicationChecklist::class, 'ApplicationID');
     }
-
-
 }
-
-
