@@ -52,10 +52,19 @@
                     <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Settings</a>
                   </li>
                   <li>
-                    <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</a>
+                    <a href="{{ route('profile.edit') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Profile</a>
                   </li>
-                  <li>
-                    <a href="{{ route('logout') }}" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white" role="menuitem">Sign out</a>
+                  <li class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                     <form method="POST" action="{{ route('logout') }}" class="block w-full">
+                         @csrf
+                         <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 dark:text-gray-300 dark:hover:text-white" style="background:none; border:none; cursor:pointer;">
+                             Sign out
+                         </button>
+                     </form>
+                 </li>
+                 
+                 
+                    
                   </li>
                 </ul>
               </div>
