@@ -6,14 +6,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ApplicationInfoController;
+use App\Http\Controllers\DataExport;
 
 // Route::get('/', function () {
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', function () {
-    return view('admin.dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [dashboardController::class, 'overview'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -67,6 +66,8 @@ Route::post('/search-existing-transaction', [ApplicationInfoController::class, '
 Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'store'])->name('application.submit');
 
 
+
+Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
 
 
 
