@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class ApplicationCheckList extends Model
+class ApplicationChecklist extends Model
 {
     
     protected $fillable = ['ApplicationID', 'ChecklistItem', 'Feedback'];
