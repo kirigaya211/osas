@@ -56,7 +56,7 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $user)
-                            <tr class="border-b dark:border-gray-700">
+                            <tr wire:key="{{ $user->StatusID }}" class="border-b dark:border-gray-700">
                                 <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
                                     {{ $user->StatusID }}
                                 </th>
@@ -65,7 +65,7 @@
                                 <td class="px-4 py-3">{{ $user->application->representativeEmail ?? 'N/A' }}</td>
                                 <td class="px-4 py-3">{{ $user->application->contactNumber ?? 'N/A' }}</td>
                                 <td class="px-4 py-3 flex items-center justify-end">
-                                    <button class="px-3 py-1 bg-red-500 text-white rounded">X</button>
+                                    <button wire:click="review({{$user->StatusID}})" class="px-3 py-1 bg-red-500 text-white rounded">Review</button>
                                 </td>
                             </tr>
                             @endforeach

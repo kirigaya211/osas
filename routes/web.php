@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\ApplicationStatusListController;
 use App\Http\Controllers\ProfileController;
+use App\Livewire\ReviewApplication;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PendingController;
@@ -70,7 +71,7 @@ Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'st
 Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
 
 
-
+Route::get('/review/{userID}', ReviewApplication::class)->name('review');
 
 
 

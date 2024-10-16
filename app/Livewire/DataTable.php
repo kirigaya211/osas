@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use App\Models\ApplicationStatusList;
 use Livewire\WithPagination;
+use Livewire\Attributes\On;
 
 class DataTable extends Component
 {
@@ -16,12 +17,24 @@ class DataTable extends Component
     public $type = '';
     public $statuss;
     
+ 
+    
 
     // public function mount($status)
     // {
     //     dd($status);
     //     $this->statuss = $status;
     // }
+    public function review($userID){
+        return redirect()->route('review', ['userID' => $userID]);
+    }
+
+
+    #[On('update-application')]
+    public function updatingTable()
+    {
+
+    }
 
     public function render()
     {
