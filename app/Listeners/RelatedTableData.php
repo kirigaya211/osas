@@ -40,7 +40,7 @@ class RelatedTableData
     public function pendingStatus(ApplicationStatusList $applicationStatus){
 
         $pendingApplication = new PendingList();
-        $pendingApplication->StatusID = $applicationStatus->StatusID;
+        $pendingApplication->StatusID = $applicationStatus->id;
         $pendingApplication->Feedback="";
         $pendingApplication->save();
 
