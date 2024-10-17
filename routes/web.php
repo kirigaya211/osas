@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function(){
         Route::resource('dashboard', dashboardController::class);
         Route::get('/overview', [dashboardController::class, 'overview'])->name('dashboard.overview');
         Route::get('/pending/{status}', [dashboardController::class, 'pending'])->name('dashboard.pending');
+        Route::get('/review/{userID}', [dashboardController::class, 'review'])->name('review');
 });
 
 });
@@ -71,7 +72,7 @@ Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'st
 Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
 
 
-Route::get('/review/{userID}', ReviewApplication::class)->name('review');
+
 
 
 

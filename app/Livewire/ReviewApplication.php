@@ -11,13 +11,7 @@ class ReviewApplication extends Component
 {
 
     public $userID;
-    public $user;
-
-    public function mount($userID){
-        $this->userID = $userID;
-
-        $this->user = ApplicationStatusList::where('StatusID', $this->userID)->first();
-    }
+  
     // public function update(){
 
 
@@ -28,8 +22,9 @@ class ReviewApplication extends Component
 
     public function render()
     {
+        $application = ApplicationStatusList::where('StatusID', $this->userID)->first();
         return view('livewire.review-application',[
-            'user' => $this->user
+            'user' => $application
         ]);
     }
 }

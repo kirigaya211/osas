@@ -83,4 +83,8 @@ class dashboardController extends Controller
     
         return view('admin.dataTable',['status'=>$status]);
     }
+
+    public function review($userID){
+        return view('admin.review', compact('userID'));
+    }
 }
