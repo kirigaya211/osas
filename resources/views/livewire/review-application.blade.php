@@ -76,7 +76,7 @@
             </form>
             
 
-            <p class="ms-auto text-xs text-gray-500 dark:text-gray-400">Remember, to abide always to the  <a href="https://privacy.gov.ph/data-privacy-act/" class="text-blue-600 dark:text-blue-500 hover:underline">Data Privacy Act 2012</a>.</p>
+            <p class="ms-auto text-xs text-gray-500 dark:text-gray-400">Remember to abide always to the  <a href="https://privacy.gov.ph/data-privacy-act/" target="_blank" class="text-blue-600 dark:text-blue-500 hover:underline">Data Privacy Act 2012</a>.</p>
 
         </div>
     </div>
