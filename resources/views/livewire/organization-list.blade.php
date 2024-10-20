@@ -14,9 +14,8 @@
         </div>
     </div>
 
-
-@foreach ($organizations as $organization)
 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+@foreach ($organizations as $organization)
     <div
         class="relative bg-orange-100 border border-gray-200 rounded-lg shadow dark:bg-orange-900 dark:border-gray-700 p-6">
         <a href="#">
@@ -45,10 +44,8 @@
             </a>
         </div>
     </div>
-</div>
-
 @endforeach
-    
+</div>  
 
 
 
