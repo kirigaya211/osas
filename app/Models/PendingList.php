@@ -7,5 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 
 class PendingList extends Model
 {
-    use HasFactory;
+    protected $primaryKey = 'id';
+
+    protected $fillable = ['StatusID', 'Feedback'];
+
+    public function status()
+    {
+        return $this->belongsTo(ApplicationStatusList::class, 'StatusID');
+    }
 }

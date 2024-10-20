@@ -28,6 +28,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/overview', [dashboardController::class, 'overview'])->name('dashboard.overview');
         Route::get('/pending/{status}', [dashboardController::class, 'pending'])->name('dashboard.pending');
         Route::get('/review/{userID}', [dashboardController::class, 'review'])->name('review');
+        Route::get('/organization', [dashboardController::class, 'organization'])->name('dashboard.organization');
 });
 
 });

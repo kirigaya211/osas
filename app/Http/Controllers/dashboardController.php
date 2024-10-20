@@ -15,7 +15,7 @@ class dashboardController extends Controller
      */
     public function index()
     {
-       return $this->overview();
+        return $this->overview();
     }
 
     /**
@@ -67,24 +67,60 @@ class dashboardController extends Controller
     }
 
 
-    public function overview(){
-        $pending = PendingList::count();
-        $denied =  DeniedList::count();
-        $accept =  AcceptedList::count();
-        // $staff =   ApplicationStaffList::with('staff')->get();
+    public function overview()
+    {
         
+        $pending = PendingList::count();
+        $denied = DeniedList::count();
+        $accept = AcceptedList::count();
+        $applicationNumber = ApplicationStatusList::count();
+
       
-        return view('admin.overview', compact('pending', 'denied','accept'));
+        $oneWeekAgo = now()->subWeek();
 
-        // return view('admin.overview');
+        $pendingLastWeek = PendingList::where('created_at', '<=', $oneWeekAgo)->count();
+        $deniedLastWeek = DeniedList::where('created_at', '<=', $oneWeekAgo)->count();
+        $approvedLastWeek = AcceptedList::where('created_at', '<=', $oneWeekAgo)->count();
+
+        
+        $pendingPercentageChange = $this->calculatePercentageChange($pending, $pendingLastWeek);
+        $deniedPercentageChange = $this->calculatePercentageChange($denied, $deniedLastWeek);
+        $approvedPercentageChange = $this->calculatePercentageChange($accept, $approvedLastWeek);
+
+       
+        return view('admin.overview', compact(
+            'pending',
+            'denied',
+            'accept',
+            'applicationNumber',
+            'pendingPercentageChange',
+            'deniedPercentageChange',
+            'approvedPercentageChange'
+        ));
+    }
+    private function calculatePercentageChange($current, $previous)
+    {
+        if ($previous > 0) {
+            return (($current - $previous) / $previous) * 100;
+        }
+
+        return 100;
     }
 
-    public function pending($status){
-    
-        return view('admin.dataTable',['status'=>$status]);
+
+    public function pending($status)
+    {
+
+        return view('admin.dataTable', ['status' => $status]);
     }
 
-    public function review($userID){
+    public function review($userID)
+    {
         return view('admin.review', compact('userID'));
+    }
+
+    public function organization()
+    {
+        return view('admin.organizationList');
     }
 }

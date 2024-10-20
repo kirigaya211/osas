@@ -7,7 +7,8 @@ use Illuminate\Console\Application;
 use Livewire\Component;
 use App\Models\ApplicationStatusList;
 use App\Models\PendingList;
-
+use App\Models\DeniedList;
+use App\Models\AcceptedList;
 
 class ReviewApplication extends Component
 {
@@ -26,11 +27,12 @@ class ReviewApplication extends Component
         
         if ($application) {
     
-            $applicationStatus->update($StatusType = $this->statusChange);
+            $applicationStatus->update(['StatusType' => $this->statusChange]);
             $application->Feedback = $this->feedback;
             $application->save();
             $applicationStatus->save();
 
+            $this->addToTable($application);
             return redirect()->route('dashboard');
         } else {
             
@@ -38,8 +40,30 @@ class ReviewApplication extends Component
         }
     }
 
-    public function addToTable(){
-        
+   
+    public function addToTable($application){
+        $table=null;
+        switch ($this->statusChange) {
+            case '1':
+                $table = PendingList::class;
+                break;
+            case '2':
+                $table = DeniedList::class;
+                break;
+            case '3':
+                $table = AcceptedList::class;
+                break;
+            default:
+                session()->flash('error', 'Invalid status!');
+                break;
+        }
+
+    
+        if ($table) {
+            $applicationTable = $table::create(['StatusID' => $application->StatusID]);
+            $applicationTable->Feedback = $this->feedback;
+            $applicationTable->save();
+        }
     }
 
     public function render()
