@@ -1,6 +1,9 @@
+
 <div>
    
-    <div id="chart"></div>
+    <div id="chart">
+      
+    </div>
     
       
         <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
@@ -52,7 +55,7 @@
       ],
       chart: {
         type: "bar",
-        height: "320px",
+        height: "420px",
         fontFamily: "Inter, sans-serif",
         toolbar: {
           show: false,
@@ -61,9 +64,10 @@
       plotOptions: {
         bar: {
           horizontal: false,
-          columnWidth: "70%",
+          columnWidth: "90%",
           borderRadiusApplication: "end",
-          borderRadius: 8,
+          borderRadius: 5,
+          distributed:false
         },
       },
       tooltip: {
@@ -118,7 +122,11 @@
         },
       },
       yaxis: {
-        show: false,
+        show: true,
+      },
+      grid:{
+        show: true,
+        borderColor:'#a9a9a9'
       },
       fill: {
         opacity: 1,
@@ -126,8 +134,10 @@
     }
     
     if(document.getElementById("chart") && typeof ApexCharts !== 'undefined') {
-      const chart = new ApexCharts(document.getElementById("chart"), options);
-      chart.render();
+      window.onload = function() {
+        const chart = new ApexCharts(document.getElementById("chart"), options);
+        chart.render();
+      };
     }
     
         </script>
