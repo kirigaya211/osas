@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicationStatusList extends Model
 {
     use HasFactory;
-    protected $primaryKey = 'StatusID';
+    protected $primaryKey = 'id';
     protected $fillable = ['ApplicationID','StatusID','StatusType',];
 
 
