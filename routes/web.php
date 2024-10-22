@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ApplicationInfoController;
 use App\Http\Controllers\DataExport;
+use App\Http\Controllers\EmailController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -71,7 +72,6 @@ Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'st
 
 
 Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
-
 
 
 

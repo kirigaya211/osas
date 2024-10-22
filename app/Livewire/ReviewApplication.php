@@ -3,12 +3,15 @@
 namespace App\Livewire;
 
 use App;
+use App\Models\ApplicationInfo;
 use Illuminate\Console\Application;
 use Livewire\Component;
 use App\Models\ApplicationStatusList;
 use App\Models\PendingList;
 use App\Models\DeniedList;
 use App\Models\AcceptedList;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\MyEmail;
 
 class ReviewApplication extends Component
 {
@@ -22,6 +25,7 @@ class ReviewApplication extends Component
     
     public function updateStatus($userID)  {
         
+
         $application = PendingList::where('StatusID', $userID)->first();
         $applicationStatus = ApplicationStatusList::where('StatusID', $userID)->first();
         
@@ -33,6 +37,7 @@ class ReviewApplication extends Component
             $applicationStatus->save();
 
             $this->addToTable($application);
+            $this->sendEmail();
             return redirect()->route('dashboard');
         } else {
             
@@ -64,6 +69,23 @@ class ReviewApplication extends Component
             $applicationTable->Feedback = $this->feedback;
             $applicationTable->save();
         }
+    }
+
+    public function sendEmail(){
+        $applicationID = ApplicationStatusList::where('StatusID', $this->userID)->value('ApplicationID');
+        $statusText = match ($this->statusChange) {
+            '1' => 'Pending',
+            '2' => 'Denied',
+            '3' => 'Approved',
+            default => 'Unknown Status',
+        };
+
+        $toEmail =ApplicationInfo::where('ApplicationID', $applicationID)->value('representativeEmail');
+        $message = $this->feedback;
+        $subject = "Application Progress: {$statusText}";
+
+        $response = Mail::to($toEmail)->send(new MyEmail($message, $subject));
+
     }
 
     public function render()
