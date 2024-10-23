@@ -16,6 +16,10 @@
             Representative Name: {{ $user->application->representativeName ?? 'N/A' }} <br>
             Representative Email: {{ $user->application->representativeEmail ?? 'N/A' }} <br>
             Representative Phone: {{ $user->application->contactNumber ?? 'N/A' }} <br>
+            {{-- Checklist Documents: <br>
+            @foreach ($user->application->checklist as $item)
+                Document 1: {{ $item->ChecklistID }} <br>                
+            @endforeach --}}
 
 
             <form>

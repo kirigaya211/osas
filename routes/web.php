@@ -30,6 +30,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/pending/{status}', [dashboardController::class, 'pending'])->name('dashboard.pending');
         Route::get('/review/{userID}', [dashboardController::class, 'review'])->name('review');
         Route::get('/organization', [dashboardController::class, 'organization'])->name('dashboard.organization');
+        Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
 });
 
 });
@@ -71,7 +72,7 @@ Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'st
 
 
 
-Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
+
 
 
 
