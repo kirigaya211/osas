@@ -7,6 +7,7 @@
     <title>{{ $subject }}</title>
 </head>
 <body>
+    <h2>[This is an auto generated email. Please do not reply to this email.]</h2>
     <h4>{{ $subject }}</h4>
     <p>{{ $mailmessage }}</p>
 </body>
