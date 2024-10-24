@@ -127,4 +127,8 @@ class dashboardController extends Controller
     {
         return view('admin.organizationDashboard', compact('organizationID'));
     }
+    public function userManagement()
+    {
+        return view('admin.userManagement');
+    }
 }

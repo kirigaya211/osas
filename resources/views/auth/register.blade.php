@@ -28,6 +28,16 @@
                 <error :messages="$errors->get('email')" class="mt-2" />
             </div>
 
+            <div class="mb-4 text-left">
+                <label for="role" class="block text-sm font-bold text-gray-700">Role</label>
+                <select id="role" name="role" class="block mt-1 w-full border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500" required>
+                    <option value="" disabled {{ old('role') ? '' : 'selected' }}>Select a role</option>
+                    <option value=2>Officer</option>
+                    <option value=3>User</option>
+                </select>
+                <error :messages="$errors->get('role')" class="mt-2" />
+            </div>
+
             <!-- Password -->
             <div class="mb-4 text-left">
                 <label for="password" class="block text-sm font-bold text-gray-700">Password</label>
