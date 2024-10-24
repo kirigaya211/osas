@@ -129,7 +129,9 @@
           
            
         </ul>
+        <p class="mt-6 text-xs text-gray-500 dark:text-gray-400">Remember to always abide by the <a href="https://privacy.gov.ph/data-privacy-act/" target="_blank" class="text-blue-600 dark:text-blue-500 hover:underline">Data Privacy Act 2012</a>.</p>
      </div>
+     
   </aside>
   
   <div class="p-1 sm:ml-64">

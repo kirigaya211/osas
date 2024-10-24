@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class ApplicationChecklist extends Model
 {
     
-    protected $fillable = ['ApplicationID', 'ChecklistItem', 'Feedback'];
+    protected $fillable = ['ApplicationID', 'ChecklistID', 'Feedback'];
 
     public function application()
     {

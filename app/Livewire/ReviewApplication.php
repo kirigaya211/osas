@@ -92,7 +92,8 @@ class ReviewApplication extends Component
     {
         $application = ApplicationStatusList::where('StatusID', $this->userID)->first();
         return view('livewire.review-application',[
-            'user' => $application
+            'user' => $application,
+            
         ]);
     }
 }

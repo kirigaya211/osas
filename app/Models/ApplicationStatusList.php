@@ -9,6 +9,7 @@ class ApplicationStatusList extends Model
 {
     use HasFactory;
     protected $primaryKey = 'StatusID'; 
+    public $incrementing = true; 
     protected $fillable = ['ApplicationID','StatusID','StatusType',];
 
 

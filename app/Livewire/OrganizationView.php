@@ -3,11 +3,16 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use App\Models\Organization;
 
 class OrganizationView extends Component
 {
+    public $organizationID;
     public function render()
     {
-        return view('livewire.organization-view');
+        $organization = Organization::where('OrganizationID', $this->organizationID)->first();
+        return view('livewire.organization-view',[
+            'organization' => $organization
+        ]);
     }
 }

@@ -31,7 +31,7 @@ class DataExport extends Controller
          $extension = 'xlsx';
          $exportFormat =  \Maatwebsite\Excel\Excel::XLSX;
       }
-      $filename = 'dataExport-'.date('d-m-y').'.'.$extension;
+      $filename = 'GenerateReport-'.date('d-m-y').'.'.$extension;
 
       $export = new DataExportFile($request);
 

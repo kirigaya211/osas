@@ -31,6 +31,7 @@ Route::middleware('auth')->group(function(){
         Route::get('/review/{userID}', [dashboardController::class, 'review'])->name('review');
         Route::get('/organization', [dashboardController::class, 'organization'])->name('dashboard.organization');
         Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
+        Route::get('/organization/{organizationID}', [dashboardController::class,'organizationView'])->name('organization.view');
 });
 
 });

@@ -74,7 +74,7 @@ class ApplicationInfoController extends Controller
         $application->contactNumber = $request->input('contactNumber');
         $application->save();
 
-
+        
         foreach ($request->input('checklist', []) as $checklistItem) {
             ApplicationChecklist::create([
                 'ApplicationID' => $application->ApplicationID,

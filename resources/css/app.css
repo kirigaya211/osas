@@ -1,3 +1,100 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* Progress bar container */
+.progress-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0;
+}
+
+/* Progress list */
+.progress-list {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1000px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    position: relative;
+}
+
+.progress-list::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ddd;
+    z-index: 0;
+}
+
+/* Progress step */
+.progress-step {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    text-align: left;
+}
+
+.progress-step .step-circle {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e5e7eb;
+    color: #6b7280;
+    font-size: 16px;
+    font-weight: 600;
+    z-index: 2;
+    transition: background-color 0.3s, color 0.3s;
+    margin-right: 8px;
+}
+
+.progress-step.active .step-circle,
+.progress-step.completed .step-circle {
+    background-color: #f97316; /* Orange color for active and completed steps */
+    color: #ffffff; /* White text color */
+}
+
+.progress-step .step-label {
+    font-size: 16px;
+    font-weight: 600;
+    color: #6b7280;
+    transition: color 0.3s;
+}
+
+.progress-step.active .step-label,
+.progress-step.completed .step-label {
+    color: #f97316; /* Orange color for active and completed labels */
+}
+
+/* Connector Line */
+.connector {
+    height: 2px;
+    flex-grow: 1;
+    background-color: #ddd; /* Default gray */
+    margin: 0 10px;
+    transition: background-color 0.3s;
+}
+
+/* Ensure that connectors for active and completed steps are orange */
+.active + .connector,
+.completed + .connector {
+    background-color: #f97316;
+}
+
+/* Connector after the last completed step */
+.progress-step:last-child.active .connector,
+.progress-step:last-child.completed .connector {
+    background-color: #f97316;
+}
