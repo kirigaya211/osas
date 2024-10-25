@@ -19,7 +19,11 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('auth.register');
+        if (auth()->check() && auth()->user()->role === 1) {
+            return view('auth.register');
+        }
+    
+        abort(403, 'Unauthorized access');
     }
 
     /**
