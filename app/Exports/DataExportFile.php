@@ -2,14 +2,16 @@
 
 namespace App\Exports;
 
-use Maatwebsite\Excel\Concerns\FromCollection;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\WithMapping;
+// use Maatwebsite\Excel\Concerns\FromCollection;
+// use Maatwebsite\Excel\Concerns\WithHeadings;
+// use Maatwebsite\Excel\Concerns\WithMapping;
 use App\Models\ApplicationStatusList;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class DataExportFile implements FromCollection, WithHeadings, WithMapping
+class DataExportFile implements FromView
 {
     protected $type;
     protected $dateStart;
@@ -24,51 +26,68 @@ class DataExportFile implements FromCollection, WithHeadings, WithMapping
     }
 
 
-    public function collection()
-    {
-        $query = ApplicationStatusList::whereBetween('created_at', [$this->dateStart, $this->dateEnd])
-            ->with('application'); 
+    // public function collection()
+    // {
+    //     $query = ApplicationStatusList::whereBetween('created_at', [$this->dateStart, $this->dateEnd])
+    //         ->with('application'); 
 
         
-        if ($this->type !== 'all') {
-            $query->whereHas('application', function ($q) {
-                $q->where('Type', $this->type); 
-            });
-        }
+    //     if ($this->type !== 'all') {
+    //         $query->whereHas('application', function ($q) {
+    //             $q->where('Type', $this->type); 
+    //         });
+    //     }
 
-        // Return the result of the query
-        return $query->get();
+    //     // Return the result of the query
+    //     return $query->get();
+    // }
+
+    // public function map($row): array
+    // {
+    //     return [
+    //         $row->ApplicationID, 
+    //         $row->StatusID, 
+    //         $row->StatusType, 
+    //         $row->created_at, 
+    //         $row->updated_at,
+    //         $row->application->OrganizationName,
+    //         $row->application->representativeName,
+    //     ];
+    // }
+
+    // public function headings(): array
+    // {
+    //     return [
+    //         'Application ID', 
+    //         'Status ID', 
+    //         'Status Type', 
+    //         'created_at', 
+    //         'updated_at',
+    //         'Organization Name',
+    //         'Representative Name',
+    //     ];
+    // }
+
+    // /**
+    // * @param mixed $row
+    // * @return array
+    // */
+
+
+    public function view(): View{
+        $query = ApplicationStatusList::whereBetween('created_at', [$this->dateStart, $this->dateEnd])
+            ->with('application');
+            if ($this->type !== 'all') {
+                $query->whereHas('application', function ($q) {
+                    $q->where('Type', $this->type); 
+                });
+            }
+        
+            return view('export.export', [
+                'datas' => $query->get(),
+                'DateStart' => $this->dateStart,
+                'DateEnd' => $this->dateEnd,
+            ]);
     }
-
-    public function map($row): array
-    {
-        return [
-            $row->ApplicationID, 
-            $row->StatusID, 
-            $row->StatusType, 
-            $row->created_at, 
-            $row->updated_at,
-            $row->application->OrganizationName,
-            $row->application->representativeName,
-        ];
-    }
-
-    public function headings(): array
-    {
-        return [
-            'Application ID', 
-            'Status ID', 
-            'Status Type', 
-            'created_at', 
-            'updated_at',
-            'Organization Name',
-            'Representative Name',
-        ];
-    }
-
-    /**
-    * @param mixed $row
-    * @return array
-    */
    
 }
