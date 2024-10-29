@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 
 use App\Events\ApplicationInfoCreated;
 use App\Models\ApplicationInfo;
-use App\Models\ApplicationChecklist;
+use App\Models\ApplicationCheckList;
 use App\Models\ApplicationStatusList;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Event;
@@ -76,7 +76,7 @@ class ApplicationInfoController extends Controller
 
         
         foreach ($request->input('checklist', []) as $checklistItem) {
-            ApplicationChecklist::create([
+            ApplicationCheckList::create([
                 'ApplicationID' => $application->ApplicationID,
                 'ChecklistID' => $checklistItem,
             ]);
