@@ -29,6 +29,7 @@
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                     {{ $organization->OrganizationName ?? 'Organization Title' }}
                 </h1>
+                <h4>{{$organization->OrganizationID}}</h4>
 
                 <!-- Organization Description -->
                 <p class="mt-4 text-gray-700 dark:text-gray-300">
