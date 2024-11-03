@@ -75,7 +75,7 @@ Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'st
 
 
 
-
+Route::view('/organization', 'organization.organization')->name('org');
 
 
 
