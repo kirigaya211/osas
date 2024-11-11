@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ApplicationStatusListController;
+use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\ReviewApplication;
 use Illuminate\Support\Facades\Route;
@@ -81,7 +82,7 @@ Route::view('/organization', 'organization.organization')->name('org');
 
 
 
-
+Route::get("organizationDocument", [OrganizationController::class, 'document'])->name('organizationDocuments');
 
 
 

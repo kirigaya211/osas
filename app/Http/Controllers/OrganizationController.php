@@ -62,4 +62,8 @@ class OrganizationController extends Controller
     {
         //
     }
+
+    public function document(){
+        return view ("organization.orgDocument");
+    }
 }
