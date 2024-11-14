@@ -28,15 +28,32 @@ class OrganizationDocumentListController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data = new OrganizationDocumentList();
+        $data->OrganizationID = $request->organizationID;
+        $data->DocumentType = $request->type;
+
+
+        $file  = $request->file;
+        $fileName = time() . '.' . $file->getClientOriginalExtension();
+        $request->file->move(public_path('DocumentFolder'), $fileName);
+
+        $data->File = $fileName;
+
+        $data->save();
+        return redirect()->back();
+    }
+    public function download($file)
+    {
+        return response()->download(public_path('DocumentFolder/' . $file));
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(OrganizationDocumentList $organizationDocumentList)
+    public function show($file)
     {
-        //
+        $my_file = $file;
+        return view("organization.viewDocs",compact('my_file'));
     }
 
     /**

@@ -7,15 +7,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrganizationDocumentList extends Model
 {
-    protected $primaryKey = 'DocumentTypeID';
+    protected $primaryKey = 'id';
+
+    protected $fillable = [
+        'OrganizationID',
+        'DocumentType',
+        'File'
+    ];
 
     public function organization()
     {
         return $this->belongsTo(Organization::class, 'OrganizationID');
     }
 
-    public function documentType()
-    {
-        return $this->belongsTo(DocumentType::class, 'DocumentTypeID');
-    }
+    
 }

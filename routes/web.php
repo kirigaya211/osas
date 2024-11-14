@@ -9,6 +9,7 @@ use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ApplicationInfoController;
 use App\Http\Controllers\DataExport;
 use App\Http\Controllers\EmailController;
+use App\Http\Controllers\OrganizationDocumentListController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -72,10 +73,16 @@ Route::post('/search-existing-transaction', [ApplicationInfoController::class, '
 
 Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'store'])->name('application.submit');
 
+Route::middleware(['auth'])->group(function () {
+    Route::view('/organization', 'organization.organization')->name('organization');
+    Route::view('/organization/Document', 'organization.organizationDocument')->name('organizationDoc');
+    Route::post('/organization/Document', [OrganizationDocumentListController::class, 'store'])->name('organizationDoc.store');
+    Route::get('/organization/Document/download/{file}', [OrganizationDocumentListController::class, 'download'])->name('organizationDoc.download');
+    Route::get("organization/Document/view/{file}", [OrganizationDocumentListController::class, 'show'])->name('organizationDoc.show');
+    
+    
+});
 
-
-
-Route::view('/organization', 'organization.organization')->name('org');
 
 
 
