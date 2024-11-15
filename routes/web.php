@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware('auth')->group(function(){
+Route::middleware(['auth','role:1'])->group(function(){
     Route::prefix('dashboard')->group(function () {
         Route::resource('dashboard', dashboardController::class);
         Route::get('/overview', [dashboardController::class, 'overview'])->name('dashboard.overview');
@@ -84,6 +84,7 @@ Route::middleware(['auth'])->group(function () {
     
 });
 
+Route::view('/org', 'org.organization')->name('organization');
 
 
 
