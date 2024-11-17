@@ -28,14 +28,23 @@ class AuthenticatedSessionController extends Controller
 
         $user = Auth::user();
         
-        if ($user->role == 1 || $user->role == 2) {
+        if ($user->email_verified == 1) {
             $request->session()->regenerate();
-            return redirect()->intended(route('dashboard'));
-        }else if ($user->role==3) {
-            $request->session()->regenerate();
-            return redirect()->intended(route('organization'));}
+
+            $authUserRole = Auth::user()->role;
+
+            if ($authUserRole == 1) {
+                return redirect()->intended(route('dashboard.overview'));
+            }elseif($authUserRole == 2){
+                return redirect()->intended(route('dashboard.overview'));
+            }elseif($authUserRole == 3){
+                return redirect()->intended(route('organization'));
+            }else{
+                return redirect()->intended(route('landingpage'));
+            }
+        }
         Auth::logout();
-        return redirect()->intended(route('landingpage'))->withErrors(['email' => 'You must verify your email address before logging in.']);
+        return redirect()->route('login')->with('error', 'Account denied access.');
     }
 
     /**

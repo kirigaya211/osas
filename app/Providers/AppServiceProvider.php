@@ -2,10 +2,11 @@
 
 namespace App\Providers;
 
-use App\Policies\DashBoardPolicy;
+
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Facades\View;
 use App\Models\ApplicationStatusList;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -33,5 +34,8 @@ class AppServiceProvider extends ServiceProvider
                 'currentApproved' => $currentApproved,
             ]);
         });
+
+
+        
     }
 }

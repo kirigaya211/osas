@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\OrganizationDocumentList;
 use Illuminate\Http\Request;
 
@@ -29,7 +30,7 @@ class OrganizationDocumentListController extends Controller
     public function store(Request $request)
     {
         $data = new OrganizationDocumentList();
-        $data->OrganizationID = $request->organizationID;
+        $data->OrganizationEmail = Auth::user()->email;
         $data->DocumentType = $request->type;
 
 
@@ -78,5 +79,9 @@ class OrganizationDocumentListController extends Controller
     public function destroy(OrganizationDocumentList $organizationDocumentList)
     {
         //
+    }
+
+    public function viewDocument($file){
+        return view("admin.organizationDocumentView",compact('file'));
     }
 }

@@ -10,7 +10,7 @@ class OrganizationDocumentList extends Model
     protected $primaryKey = 'id';
 
     protected $fillable = [
-        'OrganizationID',
+        'OrganizationEmail',
         'DocumentType',
         'File'
     ];

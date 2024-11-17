@@ -9,24 +9,24 @@ use App\Models\Organization;
 class AddOrganization extends Component
 {
     public $organizationName = '';
-    public $organizationPresident = '';
+    public $organizationEmail = '';
     public $establishYear = '';
 
     public function submitForm()
     {
         $this->validate([
             'organizationName' => 'required|string|max:255',
-            'organizationPresident' => 'required|string|max:255',
+            'organizationEmail' => 'required|email',
             
         ]);
      
         $organization = new Organization();
         $organization->OrganizationName = $this->organizationName;
-        $organization->OrganizationPresident = $this->organizationPresident;
+        $organization->OrganizationEmail = $this->organizationEmail;
         $organization->EstablishYear = $this->establishYear;
         $organization->save();
 
-        $this->reset(['organizationName', 'organizationPresident','establishYear']); // Reset specific fields
+        $this->reset(['organizationName', 'organizationEmail','establishYear']); // Reset specific fields
         session()->flash('success', 'Organization added successfully!'); // Optional: Add a success message
 
         return redirect()->to( route('dashboard.organization')); 

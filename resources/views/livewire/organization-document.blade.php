@@ -116,10 +116,7 @@
                     enctype="multipart/form-data">
                     @csrf
                     <div class="mb-4">
-                        <div>
-                            <label for="">Organization ID:</label>
-                            <input type="text" name="organizationID" id="organizationID">
-                        </div>
+                        
                         <label for="type"
                             class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select Document
                             Type</label>

@@ -16,7 +16,7 @@ use App\Http\Controllers\OrganizationDocumentListController;
 //     return view('welcome');
 // });
 
-Route::get('/dashboard', [dashboardController::class, 'overview'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/dashboard', [dashboardController::class, 'overview'])->middleware(['auth', 'verified','rolemanager:admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -25,7 +25,7 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::middleware(['auth','role:1'])->group(function(){
+Route::middleware(['auth','rolemanager:admin'])->group(function(){
     Route::prefix('dashboard')->group(function () {
         Route::resource('dashboard', dashboardController::class);
         Route::get('/overview', [dashboardController::class, 'overview'])->name('dashboard.overview');
@@ -35,10 +35,17 @@ Route::middleware(['auth','role:1'])->group(function(){
         Route::get("/data-export", [DataExport::class, 'export_excel'])->name("data-export.index");
         Route::get('/organization/{organizationID}', [dashboardController::class,'organizationView'])->name('organization.view');
         Route::get('/user-management', [dashboardController::class,'userManagement'])->name('dashboard.user-management');
+        Route::get('organization/documentList/{file}',[OrganizationDocumentListController::class, 'viewDocument'])->name('organization.documentView');
+});
 });
 
+Route::middleware(['auth','rolemanager:organization'])->group(function () {
+    Route::view('/organization', 'organization.organization')->name('organization');
+    Route::view('/organization/Document', 'organization.organizationDocument')->name('organizationDoc');
+    Route::post('/organization/Document', [OrganizationDocumentListController::class, 'store'])->name('organizationDoc.store');
+    Route::get('/organization/Document/download/{file}', [OrganizationDocumentListController::class, 'download'])->name('organizationDoc.download');
+    Route::get("organization/Document/view/{file}", [OrganizationDocumentListController::class, 'show'])->name('organizationDoc.show');
 });
-
 
 
 
@@ -49,10 +56,10 @@ Route::get("/", function () {
 
 Route::get('/application', [ApplicationInfoController::class, 'application'])->name('application');
 
-Route::get('/application/status/edit/{id}', [ApplicationStatusListController::class, 'edit'])->name('application-info.edit');
+Route::get('/application/status/edit/{id}', [ApplicationStatusListController::class, 'edit'])->middleware('auth','rolemanager:admin','rolemanager:user')->name('application-info.edit');
 
 
-Route::put('/application/status/update/{id}', [ApplicationStatusListController::class, 'update'])->name('application-info.update');
+Route::put('/application/status/update/{id}', [ApplicationStatusListController::class, 'update'])->middleware('auth','rolemanager:admin','rolemanager:user')->name('application-info.update');
 
 
 
@@ -74,23 +81,17 @@ Route::post('/search-existing-transaction', [ApplicationInfoController::class, '
 
 Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'store'])->name('application.submit');
 
-Route::middleware(['auth'])->group(function () {
-    Route::view('/organization', 'organization.organization')->name('organization');
-    Route::view('/organization/Document', 'organization.organizationDocument')->name('organizationDoc');
-    Route::post('/organization/Document', [OrganizationDocumentListController::class, 'store'])->name('organizationDoc.store');
-    Route::get('/organization/Document/download/{file}', [OrganizationDocumentListController::class, 'download'])->name('organizationDoc.download');
-    Route::get("organization/Document/view/{file}", [OrganizationDocumentListController::class, 'show'])->name('organizationDoc.show');
-    
-    
-});
 
-Route::view('/org', 'org.organization')->name('organization');
+
+
+
+// Route::view('/org', 'org.organization')->middleware(['auth'])->name('organization');
 
 
 
 
 
-Route::get("organizationDocument", [OrganizationController::class, 'document'])->name('organizationDocuments');
+// Route::get("organizationDocument", [OrganizationController::class, 'document'])->name('organizationDocuments');
 
 
 

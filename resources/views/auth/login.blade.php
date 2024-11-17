@@ -1,5 +1,12 @@
 @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+@if (session('error'))
+    <!-- Alert Dialog -->
+    <script>
+        alert('{{ session('error') }}');
+    </script>
+@endif
+
 <div class="relative flex items-center justify-center min-h-screen bg-white backdrop-blur-lg overflow-hidden">
     <!-- Decorative Shape -->
     <svg class="absolute top-0 left-0 transform -translate-x-1/2 -translate-y-1/2 opacity-40" width="700" height="700" fill="none" xmlns="http://www.w3.org/2000/svg">

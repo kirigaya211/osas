@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Organization extends Model
 {
     protected $primaryKey = 'OrganizationID';
-    protected $fillable = ['OrganizationID','OrganizationName','OrganizationDescription','ClusterID','EstablishYear','OrganizationPresident'];
+    protected $fillable = ['OrganizationID','OrganizationName','OrganizationDescription','ClusterID','EstablishYear','OrganizationEmail'];
 
     public function applications()
     {

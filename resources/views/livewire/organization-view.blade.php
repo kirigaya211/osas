@@ -35,32 +35,39 @@
                 <p class="mt-4 text-gray-700 dark:text-gray-300">
                     {{ $organization->OrganizationDescription ?? 'Description about the organization...' }}
                 </p>
-                @livewire('calendar')
+              
                 <!-- Organization Officers -->
-                <h2 class="text-xl font-semibold mt-6 text-gray-900 dark:text-white">Officers</h2>
-                <table class="min-w-full bg-white mt-4">
-                    <thead class="bg-gray-100">
-                        <tr>
-                            <th class="py-2 px-4 border">Officer Name</th>
-                            <th class="py-2 px-4 border">Position</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        @foreach ($organization['members'] as $member)
-                            <tr>
-                                <td class="border px-4 py-2">{{ $member['name'] }}</td>
-                                <td class="border px-4 py-2">{{ $member['position'] }}</td>
-                            </tr>
-                        @endforeach
-                    </tbody>
-                </table>
+                <h2 class="text-xl font-semibold mt-6 text-gray-900 dark:text-white">Documents</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
+                    @foreach ($data as $user)
+                        <a wire:click="viewDocument('{{ $user->File }}')" 
+                           class="group w-48 h-48 mx-auto rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 block cursor-pointer transform transition duration-300 hover:scale-105 hover:shadow-2xl">
+                            <div class="relative flex flex-col items-center justify-center h-full">
+                                <!-- Document Type -->
+                                <p class="text-gray-900 dark:text-white text-lg font-semibold mb-2 group-hover:text-green-500 transition duration-200 text-center">
+                                    {{ $user->DocumentType ?? 'N/A' }}
+                                </p>
+                                <!-- Document Creation Date -->
+                                <p class="text-gray-500 text-sm text-center">
+                                    Uploaded: {{ $user->created_at->format('F d, Y') ?? 'N/A' }}
+                                </p>
+                            </div>
+                        </a>
+                    @endforeach
+                </div>
+                
+                
+                
+                
+                
+                
+                    
 
-                <hr class="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
+
+                <h2 class="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
 
                 <!-- Edit Button -->
-                <div class="flex justify-end mt-6">
-                    <button class="bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">Edit</button>
-                </div>
+               
             </div>
         </div>
 
