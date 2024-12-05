@@ -76,6 +76,7 @@ Route::get('/application/docs', [ApplicationInfoController::class, 'applicationD
 Route::get('/existing-transaction/form', [ApplicationInfoController::class, 'showExistingTransactionForm'])->name('existingTransaction.form');
 
 Route::get('/existing-transaction', [ApplicationInfoController::class, 'showExistingTransactionForm'])->name('existingTransaction');
+
 Route::post('/search-existing-transaction', [ApplicationInfoController::class, 'searchExistingTransaction'])->name('searchExistingTransaction');
 
 

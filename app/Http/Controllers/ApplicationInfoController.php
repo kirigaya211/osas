@@ -132,7 +132,7 @@ class ApplicationInfoController extends Controller
     }
     public function showExistingTransactionForm()
     {
-        return view('client.existingTransaction');
+        return view('livewire.existing-transaction');
     }
 
 

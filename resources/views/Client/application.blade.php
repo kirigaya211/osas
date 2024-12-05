@@ -27,6 +27,8 @@
         <p class="text-xl text-gray-700 text-center">Newly organized student organizations or inactive for more than one school year with at least fifteen (15) founding members</p>
     </div>
 
+    
+
     <!-- Renewal of Student Organization Card -->
     <div class="card flex-1 bg-[#FFFFFF] rounded-lg p-6 md:p-8 hover:shadow-2xl transition-shadow duration-300 mb-4 md:mb-0 cursor-pointer border-1 border-[#CDB6B6]" onclick="showStartButton('reaccreditation')">
         <div class="flex justify-center mb-4">
@@ -35,6 +37,7 @@
         <h2 class="text-xl font-bold text-[#A43B21] mb-2 text-center">RENEWAL</h2>
         <p class="text-gray-700 text-center">Student organization previously granted recognition</p>
     </div>
+
 </div>
 
 <!-- Recognition Requirements -->
