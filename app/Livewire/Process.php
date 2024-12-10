@@ -79,10 +79,12 @@ class Process extends Component
     $this->modal = true;
 }
 
-public function confirm()
+public function update($applicationNum)
     {
         $this->modal = false;
         $this->reset();
+        return redirect()->route('updateApplication', ['applicationNum' => $applicationNum]);
+
     }
 
     public function hideModal()

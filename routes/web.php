@@ -14,6 +14,7 @@ use App\Http\Controllers\DataExport;
 use App\Http\Controllers\EmailController;
 use App\Http\Controllers\OrganizationDocumentListController;
 use App\Livewire\Process;
+use App\Livewire\UpdateApplication;
 
 
 
@@ -103,6 +104,7 @@ Route::get('/', function () {
 Route::get('/application', Process::class)->name('application');
 Route::get('/application/accreditation', Accreditation::class)->name('accreditation');
 Route::get('/application/reaccreditation', Reaccreditation::class)->name('reaccreditation');
+Route::get('/application/update/{applicationNum}', UpdateApplication::class)->name('updateApplication');
 
 
 

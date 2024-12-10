@@ -13,7 +13,7 @@
                 class="bg-white border border-[#A43B21] text-[#A43B21] text-sm rounded-lg focus:ring-[#D38F2E] focus:border-[#D38F2E] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#D38F2E] dark:focus:border-[#D38F2E]"
                 placeholder="Search Application status..." required />
         </div>
-        <button  type="submit"
+        <button type="submit"
             class="p-2.5 ms-2 text-sm font-medium text-white bg-[#A43B21] rounded-lg border border-[#A43B21] hover:bg-[#D38F2E] focus:ring-4 focus:outline-none focus:ring-[#D38F2E] dark:bg-[#A43B21] dark:hover:bg-[#D38F2E] dark:focus:ring-[#D38F2E]">
             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
                 viewBox="0 0 20 20">
@@ -41,19 +41,25 @@
             <!-- Accreditation Card -->
             <div class="card flex-1 bg-white rounded-lg p-6 md:p-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl mb-4 md:mb-0 cursor-pointer border border-gray-300 hover:border-[#A43B21]"
                 wire:click="setApplication('recognition')">
-                <div class="flex justify-center mb-4">
-                    <i class="fas fa-plus-circle text-4xl text-[#A43B21]"></i>
+                
+                <div class="flex justify-center mb-4" >
+                    <svg class="w-[50px] h-[50px] text-orange-400 dark:text-white transition-transform transform hover:scale-125 hover:text-orange-500 duration-300 ease-in-out cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm11-4.243a1 1 0 1 0-2 0V11H7.757a1 1 0 1 0 0 2H11v3.243a1 1 0 1 0 2 0V13h3.243a1 1 0 1 0 0-2H13V7.757Z" clip-rule="evenodd"/>
+                      </svg>
                 </div>
                 <h2 class="text-xl font-bold text-[#A43B21] mb-2 text-center">ACCREDITATION</h2>
                 <p class="text-xl text-gray-700 text-center">Newly organized student organizations or inactive for more
                     than one school year with at least fifteen (15) founding members</p>
+                
             </div>
 
             <!-- Reaccreditation Card -->
             <div class="card flex-1 bg-white rounded-lg p-6 md:p-8 transition-all duration-300 transform hover:scale-105 hover:shadow-2xl mb-4 md:mb-0 cursor-pointer border border-gray-300 hover:border-[#A43B21]"
                 wire:click="setApplication('reaccreditation')">
                 <div class="flex justify-center mb-4">
-                    <i class="fas fa-redo text-4xl text-[#A43B21]"></i>
+                    <svg class="w-[50px] h-[50px] text-orange-400 dark:text-white transition-transform transform hover:scale-125 hover:text-orange-500 duration-300 ease-in-out cursor-pointer" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M12 2c-.791 0-1.55.314-2.11.874l-.893.893a.985.985 0 0 1-.696.288H7.04A2.984 2.984 0 0 0 4.055 7.04v1.262a.986.986 0 0 1-.288.696l-.893.893a2.984 2.984 0 0 0 0 4.22l.893.893a.985.985 0 0 1 .288.696v1.262a2.984 2.984 0 0 0 2.984 2.984h1.262c.261 0 .512.104.696.288l.893.893a2.984 2.984 0 0 0 4.22 0l.893-.893a.985.985 0 0 1 .696-.288h1.262a2.984 2.984 0 0 0 2.984-2.984V15.7c0-.261.104-.512.288-.696l.893-.893a2.984 2.984 0 0 0 0-4.22l-.893-.893a.985.985 0 0 1-.288-.696V7.04a2.984 2.984 0 0 0-2.984-2.984h-1.262a.985.985 0 0 1-.696-.288l-.893-.893A2.984 2.984 0 0 0 12 2Zm3.683 7.73a1 1 0 1 0-1.414-1.413l-4.253 4.253-1.277-1.277a1 1 0 0 0-1.415 1.414l1.985 1.984a1 1 0 0 0 1.414 0l4.96-4.96Z" clip-rule="evenodd"/>
+                      </svg>
                 </div>
                 <h2 class="text-xl font-bold text-[#A43B21] mb-2 text-center">REACCREDITATION</h2>
                 <p class="text-xl text-gray-700 text-center">Student organization previously granted recognition</p>
@@ -160,7 +166,7 @@
                 </ul>
                 <div class="mt-8 flex flex-col items-center space-y-4">
                     <button wire:click="start('accreditation')"
-                        class="text-white bg-[#A43B21] hover:bg-[#8b331c] font-medium rounded-[20px] w-[250px] h-[50px]">
+                    class="bg-gradient-to-r from-orange-400 to-red-600 text-white font-bold py-2 px-4 rounded-full shadow-md hover:from-orange-500 hover:to-red-700 ml-auto">
                         Start Accreditation Process
                     </button>
                 </div>
@@ -236,7 +242,7 @@
 
                 <div class="mt-8 flex flex-col items-center space-y-4">
                     <button wire:click="start('reaccreditation')"
-                        class="text-white bg-[#A43B21] hover:bg-[#8b331c] font-medium rounded-[20px] w-[250px] h-[50px]">
+                    class="bg-gradient-to-r from-orange-400 to-red-600 text-white font-bold py-2 px-4 rounded-full shadow-md hover:from-orange-500 hover:to-red-700 ml-auto">
                         Start Reaccreditation Process
                     </button>
                 </div>
@@ -251,40 +257,46 @@
 
     <div>
         @if ($modal)
-            <div class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50 transition-opacity duration-300 ease-in-out">
+            <div
+                class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50 transition-opacity duration-300 ease-in-out">
                 <div class="relative p-4 w-full max-w-2xl max-h-full">
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                         <!-- Modal Header -->
-                        <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <div
+                            class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
                                 Search Result
                             </h3>
                             <button wire:click="hideModal" type="button"
                                 class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
                                 data-modal-hide="default-modal">
-                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
-                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" viewBox="0 0 14 14">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                                        stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
                                 </svg>
                                 <span class="sr-only">Close modal</span>
                             </button>
                         </div>
-    
+
                         <!-- Modal Body -->
                         <div class="p-4 md:p-5 space-y-4">
                             <p class="text-center leading-relaxed text-gray-500 dark:text-gray-400">
                                 @if (session()->has('message'))
-                                    <div class="max-w-4xl mx-auto mt-6 bg-white border border-[#A43B21] rounded-lg shadow-md p-6">
+                                    <div
+                                        class="max-w-4xl mx-auto mt-6 bg-white border border-[#A43B21] rounded-lg shadow-md p-6">
                                         {!! session('message') !!}
                                     </div>
                                 @endif
                             </p>
                         </div>
-    
+
                         <!-- Modal Footer -->
-                        <div class="flex justify-center items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
-                            <button wire:click="confirm"
-                                class="text-white bg-[#A43B21] hover:bg-[#D38F2E] focus:ring-4 focus:outline-none focus:ring-[#D38F2E] font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-[#A43B21] dark:hover:bg-[#D38F2E] dark:focus:ring-[#D38F2E]">
-                                Confirm
+                        <div
+                            class="flex justify-center items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
+                            <button wire:click="update({{ $applicationNum }})"
+                            class="bg-gradient-to-r from-orange-400 to-red-600 text-white font-bold py-2 px-4 rounded-full shadow-md hover:from-orange-500 hover:to-red-700 ml-auto">
+                                Update Application
                             </button>
                         </div>
                     </div>
@@ -292,7 +304,7 @@
             </div>
         @endif
     </div>
-    
+
 
 
 

@@ -80,6 +80,27 @@ class Reaccreditation extends Component
         
     }
 
+    public function toggleSelectAll()
+{
+    $documents = [
+        'Accomplished Application Form',
+        'Certificate of Involvement/Commitment/Acceptance of the Adviser of Student Organizations',
+        'Certificate of Involvement/Commitment/Acceptance of the President of Student Organizations',
+        'Accomplishment Report',
+        'Financial Report',
+        'Action Plan and Financial Plan',
+    ];
+
+    if (count($this->checklist) === count($documents)) {
+        // Deselect all
+        $this->checklist = [];
+    } else {
+        // Select all
+        $this->checklist = $documents;
+    }
+}
+
+
     private function ApplicationStatus($applicationId)
     {
         try{
