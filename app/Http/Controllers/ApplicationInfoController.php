@@ -83,7 +83,7 @@ class ApplicationInfoController extends Controller
         }
 
 
-        Event::dispatch(new ApplicationInfoCreated($application));
+        
 
         $applicationNumber = $application->ApplicationID;
         

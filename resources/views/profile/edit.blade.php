@@ -12,12 +12,20 @@
             <div class="flex justify-center">
                 <div class="w-full max-w-2xl">
                     <!-- Profile Information Section -->
-                    <div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-                        <div class="max-w-xl mx-auto">
-                            @include('profile.partials.update-profile-information-form')
+                    @if (Auth::user()->role === 1 || Auth::user()->role === 2)
+                        <div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+                            <div class="max-w-xl mx-auto">
+                                @include('profile.partials.update-profile-information-form')
+                            </div>
                         </div>
-                    </div>
-
+                    @endif
+                    @if (Auth::user()->role === 3)
+                        <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+                            <div class="max-w-xl mx-auto">
+                                @include('livewire.organization-details')
+                            </div>
+                        </div>
+                    @endif
                     <!-- Password Update Section -->
                     <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
                         <div class="max-w-xl mx-auto">
@@ -27,12 +35,14 @@
 
                     <!-- Delete User Section (only visible for role 1 users) -->
                     @if (Auth::user()->role === 1)
-                    <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-                        <div class="max-w-xl mx-auto">
-                            @include('profile.partials.delete-user-form')
+                        <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+                            <div class="max-w-xl mx-auto">
+                                @include('profile.partials.delete-user-form')
+                            </div>
                         </div>
-                    </div>
                     @endif
+
+
                 </div>
             </div>
         </div>
