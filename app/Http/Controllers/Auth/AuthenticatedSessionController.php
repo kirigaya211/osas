@@ -38,7 +38,7 @@ class AuthenticatedSessionController extends Controller
             }elseif($authUserRole == 2){
                 return redirect()->intended(route('dashboard.overview'));
             }elseif($authUserRole == 3){
-                return redirect()->intended(route('organization'));
+                return redirect()->intended(route('organizationDoc'));
             }else{
                 return redirect()->intended(route('landingpage'));
             }

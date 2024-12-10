@@ -32,8 +32,8 @@
                         <label class="text-sm font-medium text-gray-900">Type:</label>
                         <select wire:model.live="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full lg:w-auto p-2.5">
                             <option value="">All</option>
-                            <option value="reaccreditation">Reaccreditation</option>
-                            <option value="recognition">Accreditation</option>
+                            <option value="Reaccreditation">Reaccreditation</option>
+                            <option value="Accreditation">Accreditation</option>
                         </select>
                     </div>
                     
