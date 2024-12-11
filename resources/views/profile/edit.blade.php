@@ -11,18 +11,18 @@
             <!-- Center the form content -->
             <div class="flex justify-center">
                 <div class="w-full max-w-2xl">
-                    <!-- Profile Information Section -->
                     @if (Auth::user()->role === 1 || Auth::user()->role === 2)
                         <div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
                             <div class="max-w-xl mx-auto">
-                                @include('profile.partials.update-profile-information-form')
+                                @include('livewire.update-profile')
                             </div>
                         </div>
                     @endif
-                    @if (Auth::user()->role === 3)
+                    <!-- Profile Information Section -->
+                    @if (Auth::user()->role === 1 || Auth::user()->role === 2)
                         <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
                             <div class="max-w-xl mx-auto">
-                                @include('livewire.organization-details')
+                                @include('profile.partials.update-profile-information-form')
                             </div>
                         </div>
                     @endif

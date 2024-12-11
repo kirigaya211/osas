@@ -24,7 +24,11 @@
             </div>
 
             <div class="mt-6 sm:mt-8 lg:mt-0">
-
+                <div class="flex justify-end">
+                    <button wire:click="generateCOR({{ $organization->OrganizationID }})" class="btn btn-primary bg-gradient-to-r from-yellow-400 to-red-500 text-white font-bold py-3 px-6 rounded shadow-lg hover:from-yellow-500 hover:to-red-600">
+                        Generate COR
+                    </button>
+                </div>                
                 <!-- Organization Title -->
                 <h1 class="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
                     {{ $organization->OrganizationName ?? 'Organization Title' }}

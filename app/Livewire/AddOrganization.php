@@ -2,6 +2,7 @@
 
 namespace App\Livewire;
 
+use App\Models\ClusterList;
 use Livewire\Component;
 use App\Models\Organization;
 
@@ -12,11 +13,14 @@ class AddOrganization extends Component
     public $organizationEmail = '';
     public $establishYear = '';
 
+    public $cluster = '';
+
     public function submitForm()
     {
         $this->validate([
             'organizationName' => 'required|string|max:255',
             'organizationEmail' => 'required|email',
+            'cluster' => 'required',
             
         ]);
      
@@ -24,6 +28,7 @@ class AddOrganization extends Component
         $organization->OrganizationName = $this->organizationName;
         $organization->OrganizationEmail = $this->organizationEmail;
         $organization->EstablishYear = $this->establishYear;
+        $organization->ClusterID = $this->cluster;
         $organization->save();
 
         $this->reset(['organizationName', 'organizationEmail','establishYear']); // Reset specific fields
@@ -34,6 +39,7 @@ class AddOrganization extends Component
     }
     public function render()
     {
-        return view('livewire.add-organization');
+        $clusters = ClusterList::all();
+        return view('livewire.add-organization', ['clusters' => $clusters]);
     }
 }

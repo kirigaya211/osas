@@ -25,8 +25,6 @@ class UpdateApplication extends Component
 
         $checklistItems = ApplicationCheckList::where('ApplicationID', $this->applicationNum)->get();
         $this->checklist = $checklistItems->pluck('ChecklistID')->toArray(); 
-
-        // dd($this->checklist);
       
     }
 

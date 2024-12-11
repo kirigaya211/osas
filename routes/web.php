@@ -4,6 +4,7 @@ use App\Http\Controllers\ApplicationStatusListController;
 use App\Http\Controllers\OrganizationController;
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Accreditation;
+use App\Livewire\OrgDetails;
 use App\Livewire\Reaccreditation;
 use App\Livewire\ReviewApplication;
 use Illuminate\Support\Facades\Route;
@@ -15,6 +16,8 @@ use App\Http\Controllers\EmailController;
 use App\Http\Controllers\OrganizationDocumentListController;
 use App\Livewire\Process;
 use App\Livewire\UpdateApplication;
+use App\Http\Controllers\PdfController;
+
 
 
 
@@ -49,6 +52,7 @@ Route::middleware(['auth', 'rolemanager:organization'])->group(function () {
     Route::post('/organization/Document', [OrganizationDocumentListController::class, 'store'])->name('organizationDoc.store');
     Route::get('/organization/Document/download/{file}', [OrganizationDocumentListController::class, 'download'])->name('organizationDoc.download');
     Route::get("organization/Document/view/{file}", [OrganizationDocumentListController::class, 'show'])->name('organizationDoc.show');
+    Route::get('/details', OrgDetails::class)->name('details');
 });
 
 Route::get('/application/status/edit/{id}', [ApplicationStatusListController::class, 'edit'])->middleware('auth', 'rolemanager:admin', 'rolemanager:user')->name('application-info.edit');
@@ -107,7 +111,7 @@ Route::get('/application/reaccreditation', Reaccreditation::class)->name('reaccr
 Route::get('/application/update/{applicationNum}', UpdateApplication::class)->name('updateApplication');
 
 
-
+Route::get('generate-pdf/{organizationID}',[PdfController::class, 'generatePdf'])->name('generate-pdf');
 
 
 require __DIR__ . '/auth.php';

@@ -2,8 +2,8 @@
     @php
     $roles = [
         1 => 'Admin',
-        2 => 'Officer',
-        3 => 'User',
+        2 => 'Staff',
+        3 => 'Organization',
     ];
     $validated = [
         0 => 'No',

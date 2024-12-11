@@ -1,19 +1,16 @@
 <?php
 
-namespace App\Http\Livewire;
+namespace App\Livewire;
 
 use Livewire\Component;
-use App\Models\Organization; // Assuming you have an Organization model
+use App\Models\Organization;
 
-class OrganizationDetails extends Component
+class OrgDetails extends Component
 {
-
     public $description;
     public $cluster;
     public $email;
-
-
-    // Validation rules
+     // Validation rules
     // protected $rules = [
     //     'description' => 'nullable|string|max:500',
     //     'cluster' => 'required|string',
@@ -26,28 +23,23 @@ class OrganizationDetails extends Component
         $this->email = auth()->user()->email;
     }
     
-    public function submit()
+    public function submitOrg()
     {
-        // $this->validate(); // Perform validation
-        dd($this->email);
-        // Assuming you already have an Organization model
         $organization = Organization::where('OrganizationEmail', $this->email)->first();
 
-        // Update the organization record with new data
         $organization->update([
             'OrganizationDescription' => $this->description,
             'ClusterID' => $this->cluster,
         ]);
 
-        // Session message
+
         session()->flash('message', 'Organization updated successfully!');
 
-        // Optionally, you can reset the form fields
+
         $this->reset();
     }
-
     public function render()
     {
-        return view('livewire.update-organization');
+        return view('livewire.org-details', ['description' => $this->description])->extends('organization.organization');
     }
 }

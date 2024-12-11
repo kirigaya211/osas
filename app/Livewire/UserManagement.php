@@ -5,6 +5,7 @@ namespace App\Livewire;
 use Livewire\Component;
 use Livewire\WithPagination;
 use App\Models\User;
+use App\Models\Organization;
 
 class UserManagement extends Component
 {
@@ -24,9 +25,21 @@ class UserManagement extends Component
 
     public function changeAccess($userID)
     {
-        $user = User::find($userID);
-        $user->email_verified = $this->userAccess[$userID];
-        $user->save();
+        try {
+            $user = User::find($userID);
+            $organization = Organization::where('OrganizationEmail', $user->email)->first();
+
+            if ($organization) {
+                $organization->OrganizationStatus = $this->userAccess[$userID];
+                $organization->save();
+            }
+            $user->email_verified = $this->userAccess[$userID];
+            $user->save();
+          
+        } catch (\Exception $e) {
+            return;
+        }
+
     }
 
     public function render()
