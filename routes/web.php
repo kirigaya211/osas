@@ -17,6 +17,7 @@ use App\Http\Controllers\OrganizationDocumentListController;
 use App\Livewire\Process;
 use App\Livewire\UpdateApplication;
 use App\Http\Controllers\PdfController;
+use App\Livewire\UpdateProfile;
 
 
 
@@ -29,6 +30,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::post('/profile/update', [ProfileController::class, 'updateProfile'])->name('profile.updateProfile');
 });
 
 
@@ -112,6 +114,8 @@ Route::get('/application/update/{applicationNum}', UpdateApplication::class)->na
 
 
 Route::get('generate-pdf/{organizationID}',[PdfController::class, 'generatePdf'])->name('generate-pdf');
+
+Route::get('/update/profile', UpdateProfile::class)->name('update-profile');
 
 
 require __DIR__ . '/auth.php';

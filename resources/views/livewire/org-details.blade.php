@@ -1,6 +1,10 @@
 <div class="space-y-8">
     <!-- Organization Information Section -->
     <section class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
+        @include('livewire.update-profile')
+    </section>
+    <section class="bg-white p-6 rounded-lg shadow-md dark:bg-gray-800">
+        
         <header class="mb-6">
             <h2 class="text-lg font-medium text-gray-900 dark:text-gray-100">
                 {{ __('Organization Information') }}

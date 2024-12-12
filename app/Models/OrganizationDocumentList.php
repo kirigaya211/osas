@@ -20,5 +20,9 @@ class OrganizationDocumentList extends Model
         return $this->belongsTo(Organization::class, 'OrganizationID');
     }
 
+    public function scopeSearch($query, $value){
+        $query->where('DocumentType', 'like', "%{$value}%")
+            ->orWhere('File', 'like', "%{$value}%");
+    }
     
 }

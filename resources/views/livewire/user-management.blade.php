@@ -61,8 +61,7 @@
                     </thead>
                     <tbody>
     @foreach ($users as $index => $user)
-        @continue($index === 0) <!-- This skips the first iteration -->
-        
+       
         <tr class="border-b dark:border-gray-700">
             <td class="px-4 py-3">{{ $user->name ?? 'N/A' }}</td>
             <td class="px-4 py-3 text-green-500">{{ $user->email ?? 'N/A' }}</td>

@@ -3,7 +3,7 @@
     <div class="grid grid-cols-2 items-center mb-6">
         <div>
             <h1 class="text-2xl font-bold">Organization</h1>
-            <p class="text-sm text-gray-600">List of Approved Organizations</p>
+            <p class="text-sm text-gray-600">List of Organizations</p>
         </div>
         <div class="flex justify-end space-x-4">
             <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
@@ -20,9 +20,9 @@
                 class="relative rounded-lg p-6 {{ $organization->OrganizationStatus === 1 ? 'bg-orange-100 border border-gray-200  shadow dark:bg-orange-900 dark:border-gray-700' : 'bg-gray-300 border-gray-400 dark:bg-gray-800 dark:border-gray-600' }}">
                 <a href="#">
                     <div class="flex justify-center">
-                        <div class="bg-white p-3 rounded-full shadow-lg">
-                            <img class="w-16 h-16 rounded-full object-cover" src="{{ asset('images/Group.png') }}"
-                                alt="Group Image" />
+                        <div class="bg-white p-2 rounded-full shadow-lg">
+                            <img class="w-16 h-16 rounded-full object-cover" src="{{ asset('ProfileFolder/' . $organization->OrganizationLogo) }}" alt="Organization Logo">
+            
                         </div>
                     </div>
                 </a>

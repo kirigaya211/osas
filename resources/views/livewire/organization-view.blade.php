@@ -6,7 +6,7 @@
         <!-- Card Section with Actual Organization Data -->
         <div
             class="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16 bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg border border-gray-200 dark:border-gray-700">
-            <div class="shrink-0 max-w-md lg:max-w-lg mx-auto">
+            <div class="shrink-0 max-w-md lg:max-w-lg ">
                 <div class="mb-4">
                     <a href="{{ route('dashboard.organization') }}"
                         class="hover:text-orange-600 dark:hover:text-orange-400">
@@ -18,8 +18,8 @@
 
                 </div>
                 <!-- Organization Logo -->
-                <img class="w-full dark:hidden" src="{{ asset('images/Group.png') }}" alt="Organization Logo" />
-                <img class="w-full hidden dark:block" src="{{ asset('images/Group.png') }}" alt="Organization Logo" />
+                <img class="w-full dark:hidden" src="{{ asset('ProfileFolder/' . $organization->OrganizationLogo) }}" alt="Organization Logo" />
+                <img class="w-full hidden dark:block" src="{{ asset('ProfileFolder/' . $organization->OrganizationLogo) }}" alt="Organization Logo" />
 
             </div>
 
@@ -44,21 +44,24 @@
                 <h2 class="text-xl font-semibold mt-6 text-gray-900 dark:text-white">Documents</h2>
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 p-4">
                     @foreach ($data as $user)
-                        <a wire:click="viewDocument('{{ $user->File }}')" 
-                           class="group w-48 h-48 mx-auto rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 block cursor-pointer transform transition duration-300 hover:scale-105 hover:shadow-2xl">
-                            <div class="relative flex flex-col items-center justify-center h-full">
+                        <a 
+                            wire:click="viewDocument('{{ $user->File }}')" 
+                            class="group w-full max-w-xs mx-auto rounded-lg overflow-hidden shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 block cursor-pointer transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl"
+                        >
+                            <div class="relative flex flex-col items-center justify-center h-full p-8">
                                 <!-- Document Type -->
-                                <p class="text-gray-900 dark:text-white text-lg font-semibold mb-2 group-hover:text-green-500 transition duration-200 text-center">
+                                <p class="text-gray-900 dark:text-white text-lg font-semibold mb-2 text-center group-hover:text-green-500 transition duration-200">
                                     {{ $user->DocumentType ?? 'N/A' }}
                                 </p>
                                 <!-- Document Creation Date -->
                                 <p class="text-gray-500 text-sm text-center">
-                                    Uploaded: {{ $user->created_at->format('F d, Y') ?? 'N/A' }}
+                                    Uploaded: {{ $user->created_at ? $user->created_at->format('F d, Y') : 'N/A' }}
                                 </p>
                             </div>
                         </a>
                     @endforeach
                 </div>
+                
                 
                 
                 

@@ -11,13 +11,11 @@
             <!-- Center the form content -->
             <div class="flex justify-center">
                 <div class="w-full max-w-2xl">
-                    @if (Auth::user()->role === 1 || Auth::user()->role === 2)
-                        <div class="p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
-                            <div class="max-w-xl mx-auto">
-                                @include('livewire.update-profile')
-                            </div>
+                    <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
+                        <div class="max-w-xl mx-auto">
+                            @include('livewire.update-profile')
                         </div>
-                    @endif
+                    </div>
                     <!-- Profile Information Section -->
                     @if (Auth::user()->role === 1 || Auth::user()->role === 2)
                         <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
