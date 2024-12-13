@@ -12,6 +12,11 @@ class OrganizationDocument extends Component
     public $documentType="";
     public $file="";
 
+    public $type = '';
+    public $search = '';
+    public $perPage = 5;
+
+
 
     public function mount(){
         $this->organizationEmail=Auth::user()->email;
@@ -36,7 +41,8 @@ class OrganizationDocument extends Component
     }
     public function render()
     {
-        $data = OrganizationDocumentList::where('OrganizationEmail', $this->organizationEmail)->get();
+        $data =OrganizationDocumentList::query()->where('OrganizationEmail', $this->organizationEmail)->search($this->search)->paginate($this->perPage);
+        // $data = OrganizationDocumentList::where('OrganizationEmail', $this->organizationEmail)->get();
         return view('livewire.organization-document',['data'=>$data]);
     }
 }

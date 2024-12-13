@@ -8,6 +8,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 use Illuminate\View\View;
+use App\Models\User;
+use App\Models\Organization;
 
 class ProfileController extends Controller
 {
@@ -56,5 +58,27 @@ class ProfileController extends Controller
         $request->session()->regenerateToken();
 
         return Redirect::to('/');
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $request->validate([
+            'file' => 'required|image',
+        ]);
+
+        $filename = time() . '.' . $request->file->getClientOriginalExtension();
+        $request->file->move(public_path('ProfileFolder'), $filename);
+        $user = User::find(Auth::user()->id);
+        $user->profile = $filename;
+        $user->save();
+
+        $organization = Organization::where('OrganizationEmail', Auth::user()->email)->first();
+        if (!$organization) {
+            return Redirect::back()->with('error', 'Organization not found!');
+        }
+        $organization->OrganizationLogo = $filename;
+        $organization->save();
+
+        return Redirect::back()->with('success', 'Profile updated successfully!');
     }
 }

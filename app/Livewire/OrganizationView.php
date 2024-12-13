@@ -3,9 +3,9 @@
 namespace App\Livewire;
 
 use App\Models\OrganizationDocumentList;
-use Auth;
 use Livewire\Component;
 use App\Models\Organization;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class OrganizationView extends Component
 {
@@ -13,6 +13,10 @@ class OrganizationView extends Component
 
     public function viewDocument($file){
         return redirect()->route('organization.documentView', ['file' => $file]);
+    }
+
+    public function generateCOR($organizationID){
+       return redirect()->route('generate-pdf', ['organizationID' => $organizationID]);
     }
     public function render()
     {

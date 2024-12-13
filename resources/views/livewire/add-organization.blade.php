@@ -1,12 +1,12 @@
 <div>
     <div>
-        <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative p-6 w-96 h-full ">
             <!-- Modal content -->
             <div id="crud-modal" class="relative bg-white rounded-lg shadow dark:bg-gray-700">
                 <!-- Modal header -->
                 <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                     <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
-                        Add new Organization
+                        Add New Organization
                     </h3>
                     <button type="button"
                         class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
@@ -21,7 +21,7 @@
                 </div>
                 <!-- Modal body -->
                 <form wire:submit.prevent="submitForm" class="p-6">
-                    <div class="text-center mb-6">
+                    {{-- <div class="text-center mb-6">
                         <label for="logoUpload"
                             class="block text-sm font-medium text-gray-900 dark:text-white mb-2">Organization
                             Logo</label>
@@ -32,7 +32,7 @@
                             </label>
                             <input type="file" name="logo" id="logoUpload" class="hidden">
                         </div>
-                    </div>
+                    </div> --}}
 
                     <!-- Organization Name -->
                     <div class="mb-6">
@@ -63,6 +63,16 @@
                             @for ($year = 1998; $year <= date('Y'); $year++)
                                 <option value="{{ $year }}">{{ $year }}</option>
                             @endfor
+                        </select>
+                    </div>
+
+                    <div class="mb-6">
+                        <label for="cluster" class="block text-sm font-medium text-gray-900 dark:text-white">Cluster</label>
+                        <select wire:model="cluster"  name="cluster" id="cluster" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                            <option value="" selected disabled>Select Cluster</option> <!-- Placeholder option -->
+                            @foreach ($clusters as $cluster)
+                                <option value="{{ $cluster->ClusterID }}">{{ $cluster->Label }}</option>
+                            @endforeach
                         </select>
                     </div>
 
