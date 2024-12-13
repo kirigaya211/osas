@@ -1,5 +1,3 @@
-CREATE DATABASE  IF NOT EXISTS `practice_osas` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci */ /*!80016 DEFAULT ENCRYPTION='N' */;
-USE `practice_osas`;
 -- MySQL dump 10.13  Distrib 8.0.38, for Win64 (x86_64)
 --
 -- Host: 127.0.0.1    Database: practice_osas
@@ -159,6 +157,7 @@ CREATE TABLE `cache` (
 
 LOCK TABLES `cache` WRITE;
 /*!40000 ALTER TABLE `cache` DISABLE KEYS */;
+INSERT INTO `cache` VALUES ('356a192b7913b04c54574d18c28d46e6395428ab','i:3;',1734000047),('356a192b7913b04c54574d18c28d46e6395428ab:timer','i:1734000047;',1734000047);
 /*!40000 ALTER TABLE `cache` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -425,7 +424,7 @@ CREATE TABLE `organization_document_lists` (
   `File` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`),
   KEY `organization_document_lists_organizationid_foreign` (`OrganizationEmail`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -434,7 +433,7 @@ CREATE TABLE `organization_document_lists` (
 
 LOCK TABLES `organization_document_lists` WRITE;
 /*!40000 ALTER TABLE `organization_document_lists` DISABLE KEYS */;
-INSERT INTO `organization_document_lists` VALUES (2,'arsenalchristopherjr@gmail.com','2024-11-17 10:08:32','2024-11-17 10:08:32','Accomplished Application Form','1731866912.pdf'),(3,'bec@gmail.com','2024-11-17 12:23:09','2024-11-17 12:23:09','Accomplished Application Form','1731874989.pdf');
+INSERT INTO `organization_document_lists` VALUES (2,'arsenalchristopherjr@gmail.com','2024-11-17 10:08:32','2024-11-17 10:08:32','Accomplished Application Form','1731866912.pdf'),(3,'bec@gmail.com','2024-11-17 12:23:09','2024-11-17 12:23:09','Accomplished Application Form','1731874989.pdf'),(4,'bec@gmail.com','2024-12-12 04:50:37','2024-12-12 04:50:37','Resolution','1734007837.pdf'),(5,'bec@gmail.com','2024-12-12 04:57:37','2024-12-12 04:57:37','Information Sheet of Student Organization Officer','1734008257.pdf'),(6,'bec@gmail.com','2024-12-12 04:58:52','2024-12-12 04:58:52','Student Organization Constitution and Bylaws','1734008332.pdf'),(7,'bec@gmail.com','2024-12-12 04:59:20','2024-12-12 04:59:20','Action and Financial Plan','1734008360.pdf'),(8,'bec@gmail.com','2024-12-12 04:59:35','2024-12-12 04:59:35','List of Organization Members','1734008375.pdf');
 /*!40000 ALTER TABLE `organization_document_lists` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -455,6 +454,7 @@ CREATE TABLE `organizations` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `OrganizationEmail` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `OrganizationStatus` tinyint DEFAULT '0',
+  `OrganizationLogo` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`OrganizationID`),
   KEY `organization_user_id_idx` (`OrganizationEmail`),
   KEY `cluster_idx` (`ClusterID`),
@@ -468,7 +468,7 @@ CREATE TABLE `organizations` (
 
 LOCK TABLES `organizations` WRITE;
 /*!40000 ALTER TABLE `organizations` DISABLE KEYS */;
-INSERT INTO `organizations` VALUES (2028,'OJT',NULL,NULL,2024,'2024-10-28 22:28:37','2024-10-28 22:28:37','Arz Gwapo',0),(2029,'YFC - Youth For Christ',NULL,NULL,2023,'2024-10-28 23:41:56','2024-10-28 23:41:56','Chris Arz',0),(2030,'CFD - Catholic Faith Defenders',NULL,NULL,1998,'2024-11-17 09:32:48','2024-11-17 09:32:48','cfd@gmail.com',0),(2031,'BEC - Basic Ecclesial Community','A catholic ministry',5,2014,'2024-11-17 12:24:10','2024-12-11 12:52:03','bec@gmail.com',1),(2032,'USAO - University Student - Athletes\' Organization',NULL,4,2014,'2024-12-11 10:23:33','2024-12-11 10:23:33','usao@usep.edu.ph',0);
+INSERT INTO `organizations` VALUES (2028,'OJT',NULL,NULL,2024,'2024-10-28 22:28:37','2024-10-28 22:28:37','Arz Gwapo',0,NULL),(2029,'YFC - Youth For Christ',NULL,NULL,2023,'2024-10-28 23:41:56','2024-10-28 23:41:56','Chris Arz',0,NULL),(2030,'CFD - Catholic Faith Defenders','A catholic ministry',5,1998,'2024-11-17 09:32:48','2024-12-12 04:29:09','cfd@gmail.com',0,'1734006549.png'),(2031,'BEC - Basic Ecclesial Community','A catholic ministry',5,2014,'2024-11-17 12:24:10','2024-12-12 04:10:35','bec@gmail.com',1,'1734005036.png'),(2032,'USAO - University Student - Athletes\' Organization',NULL,4,2014,'2024-12-11 10:23:33','2024-12-11 10:23:33','usao@usep.edu.ph',0,NULL);
 /*!40000 ALTER TABLE `organizations` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -552,7 +552,7 @@ CREATE TABLE `sessions` (
 
 LOCK TABLES `sessions` WRITE;
 /*!40000 ALTER TABLE `sessions` DISABLE KEYS */;
-INSERT INTO `sessions` VALUES ('TeTGyQ7NiaElFMM6BnWRND8YpIVOgeykgfq7kN6q',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36','YTo1OntzOjY6Il90b2tlbiI7czo0MDoiUzZaa0FiMzhQaFF4ZjI3N0hpenRDaTk1TTZvT1JEQXdKVVhGcmtMbCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDQ6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvb3JnYW5pemF0aW9uIjt9czozOiJ1cmwiO2E6MDp7fXM6NTA6ImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjtpOjE7fQ==',1733951812);
+INSERT INTO `sessions` VALUES ('wrXHSH6aeSlphg0ANVoSokkJ0OLzw49wKeNeYuPZ',1,'127.0.0.1','Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36','YTo0OntzOjY6Il90b2tlbiI7czo0MDoiZ0V2RFJFdzBta2VXU1RhbXJLcmpxUWlWY3lxUFViWm05S1A3VXhSaiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6NDM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9kYXNoYm9hcmQvcmV2aWV3LzE0MjkiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aToxO30=',1734009318);
 /*!40000 ALTER TABLE `sessions` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -600,9 +600,10 @@ CREATE TABLE `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   `role` int NOT NULL,
   `email_verified` tinyint NOT NULL DEFAULT '1',
+  `profile` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -611,7 +612,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Christopher Gwapo','arzkirigaya@gmail.com',NULL,'$2y$12$qgzgCpoE6bsylwV0HbT/mOsuWhPsWHRPQEkPNUbyjoAI3YDrst6ka','U78ZV3Fbk2jue3jdCFtwfpZURW7C1Sg5Xl3E19uvWbdufRIxUW62GEwVyjzY','2024-08-22 14:26:01','2024-10-28 20:52:25',1,1),(2,'Christopher Arsenal Jr','test@test.com',NULL,'$2y$12$rsyWK16C/PiFMprYFXZcY.3PRS4ZIzTBUVj05PsfvmVehEbvnzLda',NULL,'2024-10-24 19:44:47','2024-12-11 12:46:20',2,1),(3,'Christopher Gwapo','arsenalchristopherjr@gmail.com',NULL,'$2y$12$7iTfP/CtoQAgRNoZzCxa2Oelhbv1MVClt5Rybd/j5M2RYblbx/btu',NULL,'2024-10-29 00:32:31','2024-12-11 12:52:02',3,1),(4,'CFD - Catholic Faith Defenders','cfd@usep.edu.ph',NULL,'$2y$12$DCXStY8E6BFO.3bS/pmHd.qutGODzAdYnb4Q3ipb7J58wyn9eeTjq',NULL,'2024-11-14 09:58:48','2024-12-11 12:52:02',3,1),(5,'BEC - Basic Ecclesial Community','bec@gmail.com',NULL,'$2y$12$e9AiIpVzXI7W9hKRW2pLKuaTN7mZ5sbZTb4VXDWRMxbwqMNCHZ9SS',NULL,'2024-11-17 12:21:34','2024-12-11 12:52:03',3,1);
+INSERT INTO `users` VALUES (1,'Christopher Arsenal','arzkirigaya@gmail.com',NULL,'$2y$12$qgzgCpoE6bsylwV0HbT/mOsuWhPsWHRPQEkPNUbyjoAI3YDrst6ka','6a0zd0sT5H9BCUcuNpt3U4Z1GxjneaF58VnH15yKM6jarPZenOUyt8tMKLir','2024-08-22 14:26:01','2024-12-12 04:35:17',1,1,'1734005397.jpg'),(5,'BEC - Basic Ecclesial Community','bec@gmail.com',NULL,'$2y$12$e9AiIpVzXI7W9hKRW2pLKuaTN7mZ5sbZTb4VXDWRMxbwqMNCHZ9SS',NULL,'2024-11-17 12:21:34','2024-12-12 04:10:35',3,1,'1734005036.png'),(6,'administration','admin@usep.edu.ph',NULL,'$2y$12$tZSxwUJObPOb.wKiXVon7epoLYE.NV.2xsX29rfX8db5yIVuD.05a',NULL,'2024-12-12 04:21:09','2024-12-12 04:42:22',1,1,'1734007342.jpg'),(7,'CFD - Catholic Faith Defenders','cfd@gmail.com',NULL,'$2y$12$GSCr00kduFuFbQGC73nITOoB4bCIPAj6H7pRdnvoxafwEl0KIAOV6',NULL,'2024-12-12 04:25:01','2024-12-12 04:29:09',3,1,'1734006549.png');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -624,4 +625,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-12-12  5:19:54
+-- Dump completed on 2024-12-12 21:22:49
