@@ -22,7 +22,7 @@ class RegisteredUserController extends Controller
         if (auth()->check() && auth()->user()->role === 1) {
             return view('auth.register');
         }
-    
+
         abort(403, 'Unauthorized access');
     }
 
@@ -35,8 +35,8 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
-            'role' => ['required','max:255'],
+            'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'regex:/^[a-zA-Z0-9._%+-]+@usep\.edu\.ph$/', 'unique:' . User::class],
+            'role' => ['required', 'max:255'],
             'password' => ['required', 'confirmed', Rules\Password::defaults()],
         ]);
 

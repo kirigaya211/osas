@@ -67,10 +67,9 @@
         </div>
     </div>
 
-    <!-- Requirements Section -->
+
     <div id="requirements-section" class="mt-20 text-center">
 
-        <!-- Recognition Requirements Section -->
         <div id="recognition-requirements" class="{{ $applicationType === 'recognition' ? '' : 'hidden' }}">
             <div class="bg-gray-200 p-8 rounded-lg shadow-lg border-2 border-dashed border-[#A43B21]">
                 <h3
@@ -173,7 +172,6 @@
             </div>
         </div>
 
-        <!-- Reaccreditation Requirements Section -->
         <div id="reaccreditation-requirements" class="{{ $applicationType === 'reaccreditation' ? '' : 'hidden' }}">
             <div class="bg-gray-200 p-8 rounded-lg shadow-lg border-2 border-dashed border-[#A43B21]">
                 <h3
@@ -261,7 +259,7 @@
                 class="fixed inset-0 z-50 flex items-center justify-center bg-gray-900 bg-opacity-50 transition-opacity duration-300 ease-in-out">
                 <div class="relative p-4 w-full max-w-2xl max-h-full">
                     <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <!-- Modal Header -->
+                       
                         <div
                             class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
                             <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
@@ -278,8 +276,6 @@
                                 <span class="sr-only">Close modal</span>
                             </button>
                         </div>
-
-                        <!-- Modal Body -->
                         <div class="p-4 md:p-5 space-y-4">
                             <p class="text-center leading-relaxed text-gray-500 dark:text-gray-400">
                                 @if (session()->has('message'))
@@ -291,7 +287,6 @@
                             </p>
                         </div>
 
-                        <!-- Modal Footer -->
                         <div
                             class="flex justify-center items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                             <button wire:click="update({{ $applicationNum }})"

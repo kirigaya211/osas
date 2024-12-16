@@ -18,14 +18,18 @@
             <div class="mb-4 text-left">
                 <label for="name" class="block text-sm font-bold text-gray-700">Name</label>
                 <input id="name" class="block mt-1 w-full border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-                <error :messages="$errors->get('name')" class="mt-2" />
+                @error('name')
+                <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+            @enderror
             </div>
 
             <!-- Email Address -->
             <div class="mb-4 text-left">
                 <label for="email" class="block text-sm font-bold text-gray-700">Email</label>
                 <input id="email" class="block mt-1 w-full border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500" type="email" name="email" :value="old('email')" required autocomplete="username" />
-                <error :messages="$errors->get('email')" class="mt-2" />
+                @error('email')
+                <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+            @enderror
             </div>
 
             <div class="mb-4 text-left">
@@ -35,14 +39,18 @@
                     <option value=2>Staff</option>
                     <option value=3>Organization</option>
                 </select>
-                <error :messages="$errors->get('role')" class="mt-2" />
+                @error('role')
+                    <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Password -->
             <div class="mb-4 text-left">
                 <label for="password" class="block text-sm font-bold text-gray-700">Password</label>
                 <input id="password" class="block mt-1 w-full border border-gray-300 rounded-md focus:ring-orange-500 focus:border-orange-500" type="password" name="password" required autocomplete="new-password" />
-                <error :messages="$errors->get('password')" class="mt-2" />
+                @error('password')
+                    <span class="text-red-500 text-sm mt-2">{{ $message }}</span>
+                @enderror
             </div>
 
             <!-- Confirm Password -->

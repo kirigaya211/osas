@@ -24,6 +24,7 @@ use App\Livewire\UpdateProfile;
 
 
 
+
 Route::get('/dashboard', [dashboardController::class, 'overview'])->middleware(['auth', 'verified', 'rolemanager:admin'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -61,48 +62,6 @@ Route::get('/application/status/edit/{id}', [ApplicationStatusListController::cl
 Route::put('/application/status/update/{id}', [ApplicationStatusListController::class, 'update'])->middleware('auth', 'rolemanager:admin', 'rolemanager:user')->name('application-info.update');
 
 
-
-// Route::get("/", function () {
-//     return view("Client.Landingpage");
-// })->name("landingpage");
-
-// Route::get('/application', [ApplicationInfoController::class, 'application'])->name('application');
-
-
-
-
-// Route::post('/application/store', [ApplicationInfoController::class, 'store'])->name('application.store');
-// Route::get('/application/{type}/step/{step}', [ApplicationInfoController::class, 'handleApplication'])->name('application.step');
-
-
-// Route::get('/application', [ApplicationInfoController::class, 'application'])->name('application');
-
-
-// Route::get('/application/docs', [ApplicationInfoController::class, 'applicationDocs'])->name('applicationDocs');
-
-
-// Route::get('/existing-transaction/form', [ApplicationInfoController::class, 'showExistingTransactionForm'])->name('existingTransaction.form');
-
-// Route::get('/existing-transaction', [ApplicationInfoController::class, 'showExistingTransactionForm'])->name('existingTransaction');
-
-// Route::post('/search-existing-transaction', [ApplicationInfoController::class, 'searchExistingTransaction'])->name('searchExistingTransaction');
-
-
-// Route::post('/application/submit/{type}', [ApplicationInfoController::class, 'store'])->name('application.submit');
-
-
-
-
-
-// Route::view('/org', 'org.organization')->middleware(['auth'])->name('organization');
-
-
-
-
-
-// Route::get("organizationDocument", [OrganizationController::class, 'document'])->name('organizationDocuments');
-
-
 Route::get('/', function () {
     return view('livewire.start-page');
 })->name('landingpage');
@@ -111,10 +70,7 @@ Route::get('/application', Process::class)->name('application');
 Route::get('/application/accreditation', Accreditation::class)->name('accreditation');
 Route::get('/application/reaccreditation', Reaccreditation::class)->name('reaccreditation');
 Route::get('/application/update/{applicationNum}', UpdateApplication::class)->name('updateApplication');
-
-
 Route::get('generate-pdf/{organizationID}',[PdfController::class, 'generatePdf'])->name('generate-pdf');
-
 Route::get('/update/profile', UpdateProfile::class)->name('update-profile');
 
 
