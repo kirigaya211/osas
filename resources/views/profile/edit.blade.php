@@ -32,13 +32,13 @@
                     </div>
 
                     <!-- Delete User Section (only visible for role 1 users) -->
-                    @if (Auth::user()->role === 1)
+                    {{-- @if (Auth::user()->role === 1)
                         <div class="mt-6 p-6 bg-white dark:bg-gray-800 shadow-lg rounded-lg">
                             <div class="max-w-xl mx-auto">
                                 @include('profile.partials.delete-user-form')
                             </div>
                         </div>
-                    @endif
+                    @endif --}}
 
 
                 </div>

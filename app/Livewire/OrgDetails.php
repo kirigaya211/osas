@@ -40,6 +40,7 @@ class OrgDetails extends Component
     }
     public function render()
     {
-        return view('livewire.org-details', ['description' => $this->description])->extends('organization.organization');
+        $organization = Organization::where('OrganizationEmail', $this->email)->first();
+        return view('livewire.org-details', ['description' => $this->description,'organization'=>$organization])->extends('organization.organization');
     }
 }

@@ -2,6 +2,13 @@
 
     <div
         class="max-w w-full bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg p-4 md:p-6 ">
+
+        @if (session()->has('message'))
+            <div class="max-w-4xl mx-auto mt-6 bg-white border border-[#A43B21] rounded-lg shadow-md p-6">
+                {!! session('message') !!}
+            </div>
+        @endif
+
         <div class="max-w-full w-full">
             <div class="mb-4">
                 <a href="#" class="hover:text-orange-600 dark:hover:text-orange-400">
@@ -10,7 +17,6 @@
                         <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7"></path>
                     </svg>
                 </a>
-
             </div>
 
 
@@ -24,55 +30,71 @@
 
             <div style="font-family: Arial, sans-serif; margin: 20px;">
 
-                <h2 style="color: #2c3e50;">Representative Information</h2>
-                <table style="width: 100%; border-collapse: collapse; margin-bottom: 20px;">
-                    <tr>
-                        <td style="padding: 8px; border: 1px solid #ddd;"><strong>Representative Name:</strong></td>
-                        <td style="padding: 8px; border: 1px solid #ddd;">
-                            {{ $user->application->representativeName ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; border: 1px solid #ddd;"><strong>Representative Email:</strong></td>
-                        <td style="padding: 8px; border: 1px solid #ddd;">
-                            {{ $user->application->representativeEmail ?? 'N/A' }}</td>
-                    </tr>
-                    <tr>
-                        <td style="padding: 8px; border: 1px solid #ddd;"><strong>Representative Phone:</strong></td>
-                        <td style="padding: 8px; border: 1px solid #ddd;">
-                            {{ $user->application->contactNumber ?? 'N/A' }}</td>
-                    </tr>
-                </table>
 
-                <h2 style="color: #2c3e50;">Checklist Documents</h2>
-                <table style="width: 100%; border-collapse: collapse;">
-                    <thead>
-                        <tr style="background-color: #f2f2f2;">
-                            <th style="padding: 10px; border: 1px solid #ddd; text-align: left;"></th>
-                            <th style="padding: 10px; border: 1px solid #ddd; text-align: left;">Document</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Representative Information</h2>
+
+                    <!-- Representative Details -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Representative Name</p>
+                            <p class="text-lg font-medium text-gray-800 dark:text-gray-200">
+                                {{ $user->application->representativeName ?? 'N/A' }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Representative Email</p>
+                            <p class="text-lg font-medium text-gray-800 dark:text-gray-200">
+                                {{ $user->application->representativeEmail ?? 'N/A' }}
+                            </p>
+                        </div>
+
+                        <div>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm">Representative Phone</p>
+                            <p class="text-lg font-medium text-gray-800 dark:text-gray-200">
+                                {{ $user->application->contactNumber ?? 'N/A' }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div
+                    class="bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 rounded-lg shadow-md p-6 mb-6">
+                    <h2 class="text-2xl font-bold text-gray-900 dark:text-gray-100 mb-4">Documents Submitted</h2>
+
+                    <ul class="space-y-4">
                         @foreach ($user->application->checklists as $item)
-                            <tr>
-                                <td style="padding: 10px; border: 1px solid #ddd;">Document {{ $loop->iteration }}</td>
-                                <td style="padding: 10px; border: 1px solid #ddd;">{{ $item->ChecklistID }}</td>
-                            </tr>
+                            <li class="flex items-center space-x-3">
+                                <div
+                                    class="w-2 h-2 flex items-center justify-center bg-black-600 text-white rounded-full">
+                                </div>
+
+                                <!-- Document Name -->
+                                <div>
+                                    <p class="text-lg font-medium text-gray-800 dark:text-gray-200">
+                                        {{ $item->ChecklistID }}
+                                    </p>
+                                </div>
+                            </li>
                         @endforeach
-                    </tbody>
-                </table>
+                    </ul>
+                </div>
+
 
             </div>
 
 
             <form>
 
-                <h3 class="mb-4 font-semibold text-gray-900 dark:text-white">Status</h3>
                 <ul
                     class="items-center w-full text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg sm:flex dark:bg-gray-700 dark:border-gray-600 dark:text-white">
                     <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                         <div class="flex items-center ps-3">
-                            <input wire:model="statusChange" id="horizontal-list-radio-license" type="radio" value="1"
-                                name="list-radio"
+                            <input wire:model="statusChange" id="horizontal-list-radio-license" type="radio"
+                                value="1" name="list-radio"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="horizontal-list-radio-license"
                                 class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Pending
@@ -91,8 +113,8 @@
                     </li>
                     <li class="w-full border-b border-gray-200 sm:border-b-0 sm:border-r dark:border-gray-600">
                         <div class="flex items-center ps-3">
-                            <input wire:model="statusChange" id="horizontal-list-radio-military" type="radio" value="3"
-                                name="list-radio"
+                            <input wire:model="statusChange" id="horizontal-list-radio-military" type="radio"
+                                value="3" name="list-radio"
                                 class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500">
                             <label for="horizontal-list-radio-military"
                                 class="w-full py-3 ms-2 text-sm font-medium text-gray-900 dark:text-gray-300">Approved
@@ -113,15 +135,28 @@
                     </div>
                     <div class="flex items-center justify-between px-3 py-2 border-t dark:border-gray-600">
                         <button wire:click="updateStatus({{ $user->StatusID }})" type="button"
-                            class="inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white bg-blue-700 rounded-lg focus:ring-4 focus:ring-blue-200 dark:focus:ring-blue-900 hover:bg-blue-800">
+                            class="btn btn-primary bg-gradient-to-r from-yellow-400 to-red-500 inline-flex items-center py-2.5 px-4 text-xs font-medium text-center text-white rounded shadow-lg hover:from-yellow-500 hover:to-red-600">
                             Post Feedback
                         </button>
-                        <div class="flex ps-0 space-x-1 rtl:space-x-reverse sm:ps-2">
 
-
-                        </div>
                     </div>
                 </div>
+                <div wire:loading wire:target="updateStatus"
+                    class="absolute inset-0 flex items-center justify-center bg-gray-50 bg-opacity-70 rounded-lg z-50">
+                    <div role="status" class="flex flex-col items-center">
+                        <svg aria-hidden="true" class="w-12 h-12 text-gray-300 animate-spin fill-blue-600"
+                            viewBox="0 0 100 101" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M100 50.5908C100 78.2051 77.6142 100.591 50 100.591C22.3858 100.591 0 78.2051 0 50.5908C0 22.9766 22.3858 0.59082 50 0.59082C77.6142 0.59082 100 22.9766 100 50.5908ZM9.08144 50.5908C9.08144 73.1895 27.4013 91.5094 50 91.5094C72.5987 91.5094 90.9186 73.1895 90.9186 50.5908C90.9186 27.9921 72.5987 9.67226 50 9.67226C27.4013 9.67226 9.08144 27.9921 9.08144 50.5908Z"
+                                fill="currentColor" />
+                            <path
+                                d="M93.9676 39.0409C96.393 38.4038 97.8624 35.9116 97.0079 33.5539C95.2932 28.8227 92.871 24.3692 89.8167 20.348C85.8452 15.1192 80.8826 10.7238 75.2124 7.41289C69.5422 4.10194 63.2754 1.94025 56.7698 1.05124C51.7666 0.367541 46.6976 0.446843 41.7345 1.27873C39.2613 1.69328 37.813 4.19778 38.4501 6.62326C39.0873 9.04874 41.5694 10.4717 44.0505 10.1071C47.8511 9.54855 51.7191 9.52689 55.5402 10.0491C60.8642 10.7766 65.9928 12.5457 70.6331 15.2552C75.2735 17.9648 79.3347 21.5619 82.5849 25.841C84.9175 28.9121 86.7997 32.2913 88.1811 35.8758C89.083 38.2158 91.5421 39.6781 93.9676 39.0409Z"
+                                fill="currentFill" />
+                        </svg>
+                        <span class="text-sm text-blue-600 mt-2">Sending...</span>
+                    </div>
+                </div>
+
             </form>
 
 

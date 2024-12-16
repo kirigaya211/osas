@@ -12,7 +12,7 @@ class OrganizationView extends Component
     public $organizationID;
 
     public function viewDocument($file){
-        return redirect()->route('organization.documentView', ['file' => $file]);
+        return redirect()->route('organization.documentView', ['file' => $file, 'orgID' => $this->organizationID]);
     }
 
     public function generateCOR($organizationID){

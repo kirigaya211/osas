@@ -16,7 +16,7 @@ class UserManagement extends Component
 
     public function mount()
     {
-        // $users = User::where('role', '!=', 1)->get();
+       
         $users = User::all();
         foreach ($users as $user) {
             $this->userAccess[$user->id] = $user->email_verified;

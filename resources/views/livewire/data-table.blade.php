@@ -2,7 +2,7 @@
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <section>
         <div class="text-center text-2xl font-bold text-gray-800 dark:text-gray-200 mb-4">
-            @if($status == 1)
+            @if ($status == 1)
                 Pending
             @elseif($status == 2)
                 Denied
@@ -12,7 +12,7 @@
                 Unknown Status
             @endif
         </div>
-        
+
         <div class="mt-5 mx-auto max-w-screen-xl">
             <div class="bg-white dark:bg-gray-800 relative shadow-md sm:rounded-lg overflow-hidden">
 
@@ -20,31 +20,37 @@
                     <div class="flex w-full lg:w-1/2">
                         <div class="relative w-full">
                             <div class="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
-                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400" fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/>
+                                <svg aria-hidden="true" class="w-5 h-5 text-gray-500 dark:text-gray-400"
+                                    fill="currentColor" viewbox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
                                 </svg>
                             </div>
-                            <input wire:model.live.debounce.300ms="search" type="text" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2" placeholder="Search" required="">
+                            <input wire:model.live.debounce.300ms="search" type="text"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full pl-10 p-2"
+                                placeholder="Search" required="">
                         </div>
                     </div>
 
                     <div class="flex items-center space-x-2 w-full lg:w-auto">
                         <label class="text-sm font-medium text-gray-900">Type:</label>
-                        <select wire:model.live="type" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full lg:w-auto p-2.5">
+                        <select wire:model.live="type"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full lg:w-auto p-2.5">
                             <option value="">All</option>
                             <option value="Reaccreditation">Reaccreditation</option>
                             <option value="Accreditation">Accreditation</option>
                         </select>
                     </div>
-                    
+
                 </div>
 
-          
+
                 <div class="overflow-x-auto">
                     <table class="w-full text-sm text-left text-gray-500 dark:text-gray-400">
                         <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                             <tr>
-                                <th scope="col" class="px-4 py-3">Status#</th>
+                                <th scope="col" class="px-4 py-3">Application#</th>
                                 <th scope="col" class="px-4 py-3">Organization</th>
                                 <th scope="col" class="px-4 py-3">Representative</th>
                                 <th scope="col" class="px-4 py-3">Email</th>
@@ -56,29 +62,33 @@
                         </thead>
                         <tbody>
                             @foreach ($data as $user)
-                            <tr wire:key="{{ $user->StatusID }}" class="border-b dark:border-gray-700">
-                                <th scope="row" class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                                    {{ $user->StatusID }}
-                                </th>
-                                <td class="px-4 py-3">{{ $user->application->OrganizationName ?? 'N/A' }}</td>
-                                <td class="px-4 py-3 text-green-500">{{ $user->application->representativeName ?? 'N/A' }}</td>
-                                <td class="px-4 py-3">{{ $user->application->representativeEmail ?? 'N/A' }}</td>
-                                <td class="px-4 py-3">{{ $user->application->contactNumber ?? 'N/A' }}</td>
-                                <td class="px-4 py-3 flex items-center justify-end">
-                                    <button wire:click="review({{$user->StatusID}})" class="px-3 py-1 bg-red-500 text-white rounded">Review</button>
-                                </td>
-                            </tr>
+                                <tr wire:key="{{ $user->StatusID }}" class="border-b dark:border-gray-700">
+                                    <th scope="row"
+                                        class="px-4 py-3 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                        {{ $user->ApplicationID }}
+                                    </th>
+                                    <td class="px-4 py-3">{{ $user->application->OrganizationName ?? 'N/A' }}</td>
+                                    <td class="px-4 py-3 text-green-500">
+                                        {{ $user->application->representativeName ?? 'N/A' }}</td>
+                                    <td class="px-4 py-3">{{ $user->application->representativeEmail ?? 'N/A' }}</td>
+                                    <td class="px-4 py-3">{{ $user->application->contactNumber ?? 'N/A' }}</td>
+                                    <td class="px-4 py-3 flex items-center justify-end">
+                                        <button wire:click="review({{ $user->StatusID }})"
+                                            class="px-3 py-1 bg-red-500 text-white rounded">Review</button>
+                                    </td>
+                                </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
 
-         
+
                 <div class="py-4 px-3">
                     <div class="flex flex-col lg:flex-row justify-between items-center">
                         <div class="flex space-x-4 items-center mb-4 lg:mb-0">
                             <label class="w-32 text-sm font-medium text-gray-900">Per Page</label>
-                            <select wire:model.live="perPage" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full lg:w-auto p-2.5">
+                            <select wire:model.live="perPage"
+                                class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full lg:w-auto p-2.5">
                                 <option value="5">5</option>
                                 <option value="10">10</option>
                                 <option value="20">20</option>

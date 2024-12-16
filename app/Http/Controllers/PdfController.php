@@ -18,6 +18,6 @@ class PdfController extends Controller
 
 
     $pdf = PDF::loadView('generate-product-pdf', $data)->setPaper('a4', 'landscape'); 
-    return $pdf->download('users-lists.pdf');
+    return $pdf->download('OSAS-COR.pdf');
    }
 }

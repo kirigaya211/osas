@@ -14,13 +14,15 @@ use Maatwebsite\Excel\Concerns\FromView;
 class DataExportFile implements FromView
 {
     protected $type;
+    protected $status;
     protected $dateStart;
     protected $dateEnd;
 
     public function __construct(Request $request)
     {
-    
+
         $this->type = $request->input('type');
+        $this->status = $request->input('status');
         $this->dateStart = Carbon::parse($request->input('start'))->startOfDay()->format('Y-m-d H:i:s');
         $this->dateEnd = Carbon::parse($request->input('end'))->endOfDay()->format('Y-m-d H:i:s');
     }
@@ -31,7 +33,7 @@ class DataExportFile implements FromView
     //     $query = ApplicationStatusList::whereBetween('created_at', [$this->dateStart, $this->dateEnd])
     //         ->with('application'); 
 
-        
+
     //     if ($this->type !== 'all') {
     //         $query->whereHas('application', function ($q) {
     //             $q->where('Type', $this->type); 
@@ -74,20 +76,25 @@ class DataExportFile implements FromView
     // */
 
 
-    public function view(): View{
+    public function view(): View
+    {
         $query = ApplicationStatusList::whereBetween('created_at', [$this->dateStart, $this->dateEnd])
             ->with('application');
-            if ($this->type !== 'all') {
-                $query->whereHas('application', function ($q) {
-                    $q->where('Type', $this->type); 
-                });
-            }
-        
-            return view('export.export', [
-                'datas' => $query->get(),
-                'DateStart' => $this->dateStart,
-                'DateEnd' => $this->dateEnd,
-            ]);
+        if ($this->type !== 'all') {
+            $query->whereHas('application', function ($q) {
+                $q->where('Type', $this->type);
+            });
+        }
+        if ($this->status !== 'all') {
+            $query->where('StatusType', $this->status);
+        }
+
+
+        return view('export.export', [
+            'datas' => $query->get(),
+            'DateStart' => $this->dateStart,
+            'DateEnd' => $this->dateEnd,
+        ]);
     }
-   
+
 }

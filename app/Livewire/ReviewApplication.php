@@ -21,10 +21,10 @@ class ReviewApplication extends Component
     public $feedback;
 
     public $statusChange;
+
   
-    
+   
     public function updateStatus($userID)  {
-        
 
         $application = PendingList::where('StatusID', $userID)->first();
         $applicationStatus = ApplicationStatusList::where('StatusID', $userID)->first();
@@ -72,7 +72,8 @@ class ReviewApplication extends Component
     }
 
     public function sendEmail(){
-        $applicationID = ApplicationStatusList::where('StatusID', $this->userID)->value('ApplicationID');
+        try{
+            $applicationID = ApplicationStatusList::where('StatusID', $this->userID)->value('ApplicationID');
         $statusText = match ($this->statusChange) {
             '1' => 'Pending',
             '2' => 'Denied',
@@ -85,6 +86,10 @@ class ReviewApplication extends Component
         $subject = "Application Progress: {$statusText}";
 
         $response = Mail::to($toEmail)->send(new MyEmail($message, $subject));
+        } catch (\Exception $e) {
+            session()->flash('error', 'Failed to send email!');
+        }
+       
 
     }
 

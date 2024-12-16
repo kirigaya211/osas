@@ -251,6 +251,17 @@
                             <option value="reaccreditation">Reaccreditation</option>
                         </select>
                     </div>
+                    <div class="mb-4">
+                        <label for="v" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Select
+                            Status</label>
+                        <select id="status" name="status"
+                            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="all" selected>All</option>
+                            <option value="1">Pending</option>
+                            <option value="2">Denied</option>
+                            <option value="3">Approved</option>
+                        </select>
+                    </div>
                     <div id="date-range-picker" date-rangepicker class="flex items-center space-x-4 mb-4">
                         <div class="relative w-full">
                             <label for="datepicker-range-start" class="sr-only">Select Date From</label>
