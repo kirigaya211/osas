@@ -16,6 +16,7 @@ class Reaccreditation extends Component
     public $contactNumber;
     public $checklist = [];
     public $modal = false;
+    public $exist=true;
 
     protected $rules = [
         'organizationId' => 'required|numeric',
@@ -32,7 +33,7 @@ class Reaccreditation extends Component
         if ($organization==null) {
             $this->modal = true;
             session()->flash('message', "Organization not found");
-            return;
+            return $this->exist = false;
         }
 
         $application = ApplicationInfo::create([

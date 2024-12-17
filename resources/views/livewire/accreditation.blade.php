@@ -85,9 +85,6 @@
             @endif
         </div>
 
-
-
-
         <div class="items-center mt-6 flex">
             <x-button wire:click="submit"
                 class="bg-gradient-to-r from-orange-400 to-red-600 text-white font-bold py-2 px-4 rounded-full shadow-md hover:from-orange-500 hover:to-red-700 ml-auto">
