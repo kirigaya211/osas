@@ -13,6 +13,7 @@
                 class="bg-white border border-[#A43B21] text-[#A43B21] text-sm rounded-lg focus:ring-[#D38F2E] focus:border-[#D38F2E] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#D38F2E] dark:focus:border-[#D38F2E]"
                 placeholder="Search Application status..." required />
         </div>
+       
         <button type="submit"
             class="p-2.5 ms-2 text-sm font-medium text-white bg-[#A43B21] rounded-lg border border-[#A43B21] hover:bg-[#D38F2E] focus:ring-4 focus:outline-none focus:ring-[#D38F2E] dark:bg-[#A43B21] dark:hover:bg-[#D38F2E] dark:focus:ring-[#D38F2E]">
             <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
@@ -22,6 +23,8 @@
             </svg>
             <span class="sr-only">Search</span>
         </button>
+
+        
     </form>
 
 
@@ -286,7 +289,7 @@
                                 @endif
                             </p>
                         </div>
-
+                        @if ($application!=null)
                         <div
                             class="flex justify-center items-center p-4 md:p-5 border-t border-gray-200 rounded-b dark:border-gray-600">
                             <button wire:click="update({{ $applicationNum }})"
@@ -294,6 +297,8 @@
                                 Update Application
                             </button>
                         </div>
+                        @endif
+                        
                     </div>
                 </div>
             </div>

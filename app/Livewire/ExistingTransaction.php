@@ -28,7 +28,6 @@ class ExistingTransaction extends Component
     {
         
             $data = ApplicationStatusList::where('StatusType', $this->statuss)
-            dd($data);
             ->with('application')
             ->when($this->type !=='', function ($query) {
                 return $query->whereHas('application', function ($q) {

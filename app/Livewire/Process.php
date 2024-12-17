@@ -11,6 +11,8 @@ class Process extends Component
     public $modal = false;
     public $applicationNum;
 
+    public $application=null;
+
 
 
 
@@ -42,7 +44,7 @@ class Process extends Component
     if ($applications->isEmpty()) {
         $this->modal = true;
         session()->flash('message', 'Application not found');
-        return;
+        return $this->application;
     }
 
     // Start building the message table
@@ -75,7 +77,7 @@ class Process extends Component
 
   
     session()->flash('message', $message);
-
+    $this->application = $applications;
     $this->modal = true;
 }
 
