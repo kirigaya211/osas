@@ -75,7 +75,7 @@ class Process extends Component
 
   
     session()->flash('message', $message);
-
+    $this->application = $applications;
     $this->modal = true;
 }
 
