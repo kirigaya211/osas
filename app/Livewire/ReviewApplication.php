@@ -22,15 +22,20 @@ class ReviewApplication extends Component
 
     public $statusChange;
 
-  
-   
-    public function updateStatus($userID)  {
+
+
+    public function updateStatus($userID)
+    {
+        $this->validate([
+            'statusChange' => 'required',
+            'feedback' => 'required|string|min:5',
+        ]);
 
         $application = PendingList::where('StatusID', $userID)->first();
         $applicationStatus = ApplicationStatusList::where('StatusID', $userID)->first();
-        
+
         if ($application) {
-    
+
             $applicationStatus->update(['StatusType' => $this->statusChange]);
             $application->Feedback = $this->feedback;
             $application->save();
@@ -40,14 +45,18 @@ class ReviewApplication extends Component
             $this->sendEmail();
             return redirect()->route('dashboard');
         } else {
-            
+
             session()->flash('error', 'Application not found!');
         }
+
+        session()->flash('message', 'Status updated and feedback sent successfully!');
     }
 
-   
-    public function addToTable($application){
-        $table=null;
+
+
+    public function addToTable($application)
+    {
+        $table = null;
         switch ($this->statusChange) {
             case '1':
                 $table = PendingList::class;
@@ -63,7 +72,7 @@ class ReviewApplication extends Component
                 break;
         }
 
-    
+
         if ($table) {
             $applicationTable = $table::create(['StatusID' => $application->StatusID]);
             $applicationTable->Feedback = $this->feedback;
@@ -71,34 +80,35 @@ class ReviewApplication extends Component
         }
     }
 
-    public function sendEmail(){
-        try{
+    public function sendEmail()
+    {
+        try {
             $applicationID = ApplicationStatusList::where('StatusID', $this->userID)->value('ApplicationID');
-        $statusText = match ($this->statusChange) {
-            '1' => 'Pending',
-            '2' => 'Denied',
-            '3' => 'Approved',
-            default => 'Unknown Status',
-        };
+            $statusText = match ($this->statusChange) {
+                '1' => 'Pending',
+                '2' => 'Denied',
+                '3' => 'Approved',
+                default => 'Unknown Status',
+            };
 
-        $toEmail =ApplicationInfo::where('ApplicationID', $applicationID)->value('representativeEmail');
-        $message = $this->feedback;
-        $subject = "Application Progress: {$statusText}";
+            $toEmail = ApplicationInfo::where('ApplicationID', $applicationID)->value('representativeEmail');
+            $message = $this->feedback;
+            $subject = "Application Progress: {$statusText}";
 
-        $response = Mail::to($toEmail)->send(new MyEmail($message, $subject));
+            $response = Mail::to($toEmail)->send(new MyEmail($message, $subject));
         } catch (\Exception $e) {
             session()->flash('error', 'Failed to send email!');
         }
-       
+
 
     }
 
     public function render()
     {
         $application = ApplicationStatusList::where('StatusID', $this->userID)->first();
-        return view('livewire.review-application',[
+        return view('livewire.review-application', [
             'user' => $application,
-            
+
         ]);
     }
 }
