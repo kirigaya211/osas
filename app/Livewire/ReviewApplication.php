@@ -28,7 +28,6 @@ class ReviewApplication extends Component
     {
         $this->validate([
             'statusChange' => 'required',
-            'feedback' => 'required|string|min:5',
         ]);
 
         $application = PendingList::where('StatusID', $userID)->first();

@@ -22,7 +22,7 @@ class OrganizationDocumentList extends Model
 
     public function scopeSearch($query, $value){
         $query->where('DocumentType', 'like', "%{$value}%")
-            ->orWhere('File', 'like', "%{$value}%");
+            ->orWhere('File', 'like', "%{$value}%")->orWhere('created_at','like', "%{$value}%");
     }
     
 }

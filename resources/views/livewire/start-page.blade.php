@@ -46,13 +46,13 @@
                         Data Privacy Statement
                     </h3>
                     <p class="text-sm leading-relaxed text-gray-700">
-                        Your privacy is important to us. By using this portal to submit your application for recognition or re-accreditation, you consent to the collection, use, and protection of your personal information as outlined in this statement.
+                    By continuing to browse this website, you agree to the University of Southeastern Philippines’ Data Privacy Statement.
                     </p>
                     <p class="text-sm leading-relaxed text-gray-700">
-                        We collect personal information, including your name, email address, phone number, mailing address, student ID, organization details, and other relevant information necessary to process your application. This information is used to manage and verify your application, communicate with you regarding your application status, provide customer support, and comply with legal and regulatory requirements.
+                    The full text of The Statement can be accessed through this <a href="https://www.usep.edu.ph/usep-data-privacy-statement/" target="_blank" class=" font-semibold text-[#A43B21]">link</a>.
                     </p>
                     <p class="text-sm leading-relaxed text-[#D9534F] font-bold">
-                        By proceeding, you acknowledge that you have read and understood this data privacy statement.
+                    
                     </p>
                     <!-- Privacy checkbox -->
                     <div class="flex items-center space-x-2">

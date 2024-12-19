@@ -21,7 +21,7 @@ class Reaccreditation extends Component
     protected $rules = [
         'organizationId' => 'required|numeric',
         'representativeName' => 'required|string|max:255',
-        // 'contactNumber' => 'required|regex:/^(09|\\+639)\d{9}$/',
+        'contactNumber' => 'required|regex:/^(09|\\+639)\d{9}$/',
         // 'checklist' => 'required|array|min:1',
     ];
 

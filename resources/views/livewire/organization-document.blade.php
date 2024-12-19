@@ -81,7 +81,7 @@
                             </div>
 
                             <div class="w-full lg:w-auto overflow-x-auto">
-                                {{-- {{ $data->links() }} --}}
+                               {{$data->links() }}
                             </div>
                         </div>
                     </div>
