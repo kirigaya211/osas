@@ -11,7 +11,7 @@
             </div>
             <input wire:model="applicationNum" type="text" id="simple-search"
                 class="bg-white border border-[#A43B21] text-[#A43B21] text-sm rounded-lg focus:ring-[#D38F2E] focus:border-[#D38F2E] block w-full ps-10 p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-[#D38F2E] dark:focus:border-[#D38F2E]"
-                placeholder="Search Application status..." required />
+                placeholder="Search Application status..." pattern="\d*" title="Please enter your application number only" required="required" />
         </div>
        
         <button type="submit"

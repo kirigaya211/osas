@@ -80,14 +80,22 @@ class DataExportFile implements FromView
     {
         $query = ApplicationStatusList::whereBetween('created_at', [$this->dateStart, $this->dateEnd])
             ->with('application');
-        if ($this->type !== 'all') {
+
+        if ($this->type !== 'all' && $this->status !== 'all') {
             $query->whereHas('application', function ($q) {
                 $q->where('Type', $this->type);
-            });
+            })->where('StatusType', $this->status);
+        } else {
+            if ($this->type !== 'all') {
+                $query->whereHas('application', function ($q) {
+                    $q->where('Type', $this->type);
+                });
+            }
+            if ($this->status !== 'all') {
+                $query->where('StatusType', $this->status);
+            }
         }
-        if ($this->status !== 'all') {
-            $query->where('StatusType', $this->status);
-        }
+
 
 
         return view('export.export', [

@@ -17,8 +17,9 @@
                 title="Please enter a valid Philippine phone number starting with 09 or +639" required="required"
                 wire:model="contactNumber" />
         </div>
-        <x-form label="Representative Name" name="representativeName" id="representativeName" required="required"
-            wire:model="representativeName" />
+        <x-form label="Representative Name" name="representativeName" id="representativeName" pattern="^[^\d]+$"
+            title="Please enter a name with only letters, spaces, and special characters, but no numbers"
+            required="required" wire:model="representativeName" />
 
 
 

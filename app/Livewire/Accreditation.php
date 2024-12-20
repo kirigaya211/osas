@@ -23,9 +23,9 @@ class Accreditation extends Component
 
     protected $rules = [
         'organizationName' => 'required|string|max:255',
-        'representativeName' => 'required|string|max:255',
+        'representativeName' => ['required', 'string', 'max:255', 'regex:/^[^\d]+$/'],
         'representativeEmail' => 'required|email|max:255',
-        // 'contactNumber' => 'required|regex:/^(09|\\+639)\d{9}$/',
+        'contactNumber' => ['required', 'regex:/^(09|\+639)\d{9}$/'],
         'organizationDescription' => 'required|string|max:1000',
         // 'checklist' => 'required|array|min:1',  // Ensure at least one checkbox is selected
     ];

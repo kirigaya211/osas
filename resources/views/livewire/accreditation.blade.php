@@ -8,17 +8,21 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <x-form label="Organization Name" name="organizationName" id="organizationName" required="required"
+            <x-form label="Organization Name" name="organizationName" id="organizationName" pattern="^[a-zA-Z\s]+$" title="Please enter your organization name and not number" required="required"
                 wire:model="organizationName" />
 
-            <x-form label="Representative Name" name="representativeName" id="representativeName" required="required"
+                <x-form label="Representative Name" name="representativeName" id="representativeName" 
+                pattern="^[^\d]+$" 
+                title="Please enter a name with only letters, spaces, and special characters, but no numbers" 
+                required="required" 
                 wire:model="representativeName" />
+            
 
             <x-form label="Representative Email" name="representativeEmail" type="email" id="representativeEmail"
                 required="required" wire:model="representativeEmail" />
 
-            <x-form label="Contact Number" name="contactNumber" id="contactNumber"
-                title="Please enter a valid Philippine phone number starting with 09 or +639" required="required"
+            <x-form label="Contact Number" name="contactNumber" id="contactNumber" pattern="^(09|\+639)\d{9}$"
+            title="Please enter a valid Philippine phone number starting with 09 or +639" required="required"
                 wire:model="contactNumber" />
 
             <div class="col-span-2">
