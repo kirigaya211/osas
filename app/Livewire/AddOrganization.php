@@ -18,8 +18,8 @@ class AddOrganization extends Component
     public function submitForm()
     {
         $this->validate([
-            'organizationName' => 'required|string|max:255',
-            'organizationEmail' => 'required|email',
+            'organizationName' => ['required', 'string', 'max:255', 'regex:/^[^\d]+$/'],
+            'organizationEmail' => ['required', 'string', 'max:255', 'regex:/^[a-zA-Z0-9._%+-]+@usep\.edu\.ph$/'],
             'cluster' => 'required',
             
         ]);
@@ -31,8 +31,8 @@ class AddOrganization extends Component
         $organization->ClusterID = $this->cluster;
         $organization->save();
 
-        $this->reset(['organizationName', 'organizationEmail','establishYear']); // Reset specific fields
-        session()->flash('success', 'Organization added successfully!'); // Optional: Add a success message
+        $this->reset(['organizationName', 'organizationEmail','establishYear']); 
+        session()->flash('success', 'Organization added successfully!'); 
 
         return redirect()->to( route('dashboard.organization')); 
 

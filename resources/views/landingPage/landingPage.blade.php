@@ -36,8 +36,10 @@
 <body class="flex flex-col min-h-screen">
     <nav class="bg-white shadow w-full border-b-4 border-red-600">
         <div class="container mx-auto p-2 flex justify-between items-center flex-col sm:flex-row">
-            <div class="flex items-center space-x-2">
-                <img src="{{ asset('images/OSAS-Logo.png') }}" alt="Logo" class="h-12">
+            <div  class="flex items-center space-x-2">
+                <a href="{{ route('login') }}">
+                    <img src="{{ asset('images/OSAS-Logo.png') }}" alt="Logo" class="h-12">
+                </a>
                 <div>
                     <h1 class="text-lg font-bold text-red-900">Office of Student Affair and Services</h1>
                 </div>

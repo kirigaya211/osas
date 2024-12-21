@@ -42,8 +42,11 @@
                         <input wire:model="organizationName" type="text" name="organizationName"
                             id="organizationName"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Enter organization name" required>
-                    </div>
+                            title="Please enter a organization name with only letters, spaces, and special characters, but no numbers" 
+                            placeholder="Enter organization name" required="required">
+                            <div class="mt-2 text-sm text-red-600">
+                                {{ $errors->first('organizationName') }}
+                        </div>
 
                     <!-- Email -->
                     <div class="mb-6">
@@ -52,13 +55,18 @@
                         <input wire:model="organizationEmail" type="text" name="organizationEmail"
                             id="organizationEmail"
                             class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                            placeholder="Enter Organization Email" required>
+                            pattern="^[a-zA-Z0-9._%+-]+@usep\.edu\.ph$"
+                            title="Please enter a valid user email address" 
+                            placeholder="Enter Organization Email" required="required">
+                            <div class="mt-2 text-sm text-red-600">
+                                {{ $errors->first('organizationEmail') }}
+                            </div>
                     </div>
 
                     <!-- Establish Year  -->
                     <div class="mb-6">
                         <label for="establishYear" class="block text-sm font-medium text-gray-900 dark:text-white">Established Year</label>
-                        <select wire:model="establishYear"  name="establishYear" id="establishYear" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <select wire:model="establishYear"  name="establishYear" id="establishYear" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required="required">
                             <option value="" selected disabled>Select a year</option> <!-- Placeholder option -->
                             @for ($year = 1998; $year <= date('Y'); $year++)
                                 <option value="{{ $year }}">{{ $year }}</option>
@@ -68,7 +76,7 @@
 
                     <div class="mb-6">
                         <label for="cluster" class="block text-sm font-medium text-gray-900 dark:text-white">Cluster</label>
-                        <select wire:model="cluster"  name="cluster" id="cluster" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                        <select wire:model="cluster"  name="cluster" id="cluster" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"  required="required">
                             <option value="" selected disabled>Select Cluster</option> <!-- Placeholder option -->
                             @foreach ($clusters as $cluster)
                                 <option value="{{ $cluster->ClusterID }}">{{ $cluster->Label }}</option>

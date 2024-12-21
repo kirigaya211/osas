@@ -22,7 +22,7 @@ class Accreditation extends Component
 
 
     protected $rules = [
-        'organizationName' => 'required|string|max:255',
+        'organizationName' => ['required', 'string', 'max:255', 'regex:/^[^\d]+$/'],
         'representativeName' => ['required', 'string', 'max:255', 'regex:/^[^\d]+$/'],
         'representativeEmail' => 'required|email|max:255',
         'contactNumber' => ['required', 'regex:/^(09|\+639)\d{9}$/'],
