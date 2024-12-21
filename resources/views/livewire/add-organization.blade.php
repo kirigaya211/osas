@@ -20,6 +20,7 @@
                     </button>
                 </div>
                 <!-- Modal body -->
+                
                 <form wire:submit.prevent="submitForm" class="p-6">
                     {{-- <div class="text-center mb-6">
                         <label for="logoUpload"
@@ -60,6 +61,9 @@
                             placeholder="Enter Organization Email" required="required">
                             <div class="mt-2 text-sm text-red-600">
                                 {{ $errors->first('organizationEmail') }}
+                                @if (session()->has('message'))
+                                {!! session('message') !!}
+                                @endif
                             </div>
                     </div>
 

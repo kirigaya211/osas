@@ -45,7 +45,6 @@ class Process extends Component
         return $this->exist = false;
     }
 
-    // Start building the message table
     $message = "<table class='w-full border-collapse'>";
 
     foreach ($applications as $application) {
