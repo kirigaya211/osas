@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\ApplicationCheckListChecklist;
+use App\Models\ApplicationCheckList;
 
 class ApplicationInfo extends Model
 {
