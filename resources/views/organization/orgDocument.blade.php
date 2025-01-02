@@ -1,5 +1,5 @@
 @extends("organization.organization")
 
 @section('content')
-    <livewire:orgdocuments/>
+    <livewire:org-documents/>
 @endsection
