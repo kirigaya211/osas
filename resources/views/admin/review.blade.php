@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
 
 @section('content')
-        <livewire:reviewapplication :userID="$userID"/>
+        <livewire:review-application :userID="$userID"/>
 @endsection
