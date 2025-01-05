@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
 
 @section('content')
-        <livewire:organizationlist/>
+        <livewire:organization-list/>
 @endsection

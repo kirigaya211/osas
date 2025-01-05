@@ -8,7 +8,7 @@ use App\Livewire\OrgDetails;
 use App\Livewire\Reaccreditation;
 use App\Livewire\ReviewApplication;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\dashboardController;
 use App\Http\Controllers\PendingController;
 use App\Http\Controllers\ApplicationInfoController;
 use App\Http\Controllers\DataExport;

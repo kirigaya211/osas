@@ -18,7 +18,7 @@
     </svg>
 
     <div class="relative z-10 bg-white bg-opacity-90 p-8 rounded-xl shadow-xl border-2 border-[#E6B980] max-w-sm w-full text-center">
-        <img src="{{ asset('images/OSAS logo.png') }}" alt="Logo" class="mx-auto mb-6 w-20">
+        <img src="{{ asset('images/OSAS-Logo.png') }}" alt="Logo" class="mx-auto mb-6 w-20">
 
         <form method="POST" action="{{ route('login') }}">
             @csrf

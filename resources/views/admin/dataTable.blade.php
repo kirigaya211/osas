@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
 
 @section('content')
-        <livewire:datatable :statuss="$status"/>
+        <livewire:data-table :statuss="$status"/>
 @endsection

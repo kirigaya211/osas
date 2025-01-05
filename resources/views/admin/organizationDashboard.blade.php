@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
 
 @section('content')
-        <livewire:organizationview :organizationID="$organizationID"/>
+        <livewire:organization-view :organizationID="$organizationID"/>
 @endsection

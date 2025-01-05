@@ -1,5 +1,5 @@
 @extends('admin.dashboard')
 
 @section('content')
-        <livewire:usermanagement/>
+        <livewire:user-management/>
 @endsection
