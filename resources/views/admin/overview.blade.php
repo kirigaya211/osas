@@ -4,8 +4,9 @@
 
 
     <div class="p-4 sm:ml-64 ">
-
+  
         <div class="p-4   dark:border-gray-700 mt-14">
+            <h2 class="text-2xl font-bold text-gray-800 dark:text-gray-100 mb-6 text-center">Cumulative Transaction Overview</h2>
             <div class="grid grid-cols-3 gap-6 mb-6">
                 <!-- Pending Card -->
                 <div
