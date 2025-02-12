@@ -58,7 +58,6 @@
             font-weight: bold;
             margin: 20px 0;
         }
-
         .org-name {
             text-align: center;
             font-size: 36px;
@@ -67,7 +66,6 @@
             color: #D4AF37;
             margin: 10px 0 20px;
         }
-
         .description {
             text-align: center;
             font-size: 16px;
@@ -76,24 +74,20 @@
             width: 80%;
             color: #333;
         }
-
         .date {
             margin-top: 30px;
             text-align: center;
             font-size: 16px;
         }
-
         .signature {
             text-align: center;
             margin-top: 40px;
             position: relative;
         }
-
         .director {
             font-weight: bold;
             text-transform: uppercase;
         }
-
         .role {
             font-size: 12px;
             color: #D4AF37;
@@ -104,26 +98,22 @@
             height: 50px;
             background-color: #8B0000;
         }
-
         .corner-top-left {
             top: 0;
             left: 0;
         }
-
         .corner-bottom-right {
             bottom: 0;
             right: 0;
         }
     </style>
 </head>
-
 <body>
     <div class="certificate-container">
         <div class="corner corner-top-left"></div>
         <div class="logo">
             <img src="images/USeP-Logo.jpg" alt="University Logo">
         </div>
-
         <div class="heading">
             <h1>University of Southeastern Philippines</h1>
             <div class="sub-heading">Office of Student Affairs and Services</div>
@@ -154,5 +144,4 @@
         <div class="corner corner-bottom-right"></div>
     </div>
 </body>
-
 </html>

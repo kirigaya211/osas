@@ -8,7 +8,7 @@
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-            <x-form label="Organization Name" name="organizationName" id="organizationName" pattern="^[a-zA-Z\s]+$" title="Please enter your organization name and not number" required="required"
+            <x-form label="Organization Name" name="organizationName" id="organizationName"  title="Please enter your organization name and not number" required="required"
                 wire:model="organizationName" />
 
                 <x-form label="Representative Name" name="representativeName" id="representativeName" 
