@@ -68,7 +68,7 @@
                     <td>{{ $data->updated_at ? \Carbon\Carbon::parse($data->updated_at)->format('Y-m-d H:i') : 'NA' }}</td>
                     <td>{{ $data->created_at && $data->updated_at ? \Carbon\Carbon::parse($data->created_at)->diffInDays($data->updated_at) : 'NA' }}</td>
                     <td>{{ $data->created_at && $data->updated_at ? \Carbon\Carbon::parse($data->created_at)->diffInMinutes($data->updated_at) : 'NA' }}</td>
-                    <td>{{ $data->StatusType == 1 ? 'Pending' : ($data->StatusType == 2 ? 'Denied' : ($data->StatusType == 3 ? 'Accepted' : 'NA')) }}</td>
+                    <td>{{ $data->StatusType == 1 ? 'Pending' : ($data->StatusType == 2 ? 'Denied' : ($data->StatusType == 3 ? 'Approved' : 'NA')) }}</td>
                 </tr>
             @endforeach
         </tbody>
